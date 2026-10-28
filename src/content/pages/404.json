@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "titre": "Page introuvable | Yesss Communication",
+    "description": "Cette page n'existe pas ou a été déplacée."
+  },
+  "titre": "Oups ! \\ {script jaune:page introuvable}",
+  "texte": "La page que vous cherchez n'existe pas ou a été déplacée. Pas de panique, on vous ramène en terrain connu.",
+  "boutons": [
+    {
+      "label": "Retour à l'accueil",
+      "href": "/"
+    },
+    {
+      "label": "Voir nos projets",
+      "href": "/projets/"
+    }
+  ]
+}

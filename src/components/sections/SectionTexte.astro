@@ -1,15 +1,17 @@
 ---
-/** Simple bloc de texte centré */
+/** Simple bloc de texte centré, avec un titre facultatif */
 import Texte from "../ui/Texte.astro";
 
 interface Props {
+  titre?: string;
   paragraphes: string[];
 }
 
-const { paragraphes } = Astro.props;
+const { titre, paragraphes } = Astro.props;
 ---
 
 <section class="texte container">
+  {titre && <Texte as="h2" class="texte__titre" texte={titre} />}
   {paragraphes.map((p) => <Texte texte={p} />)}
 </section>
 
@@ -21,5 +23,16 @@ const { paragraphes } = Astro.props;
     padding-block: var(--space-xl);
     font-size: var(--text-sm);
     text-align: center;
+  }
+
+  .texte :global(.texte__titre) {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-xl);
+  }
+
+  .texte :global(.texte__titre .txt-script) {
+    display: inline-block;
+    font-size: 1.2em;
+    line-height: 1;
   }
 </style>

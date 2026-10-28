@@ -1,0 +1,118 @@
+---
+/**
+ * Questions dépliables (<details>, sans JavaScript) sur deux colonnes, chacune illustrée
+ * par une vidéo ou une image animée. Avec « réduire les animations » : image fixe, vidéo en pause.
+ */
+import Texte from "../ui/Texte.astro";
+import site from "../../content/site.json";
+
+interface Props {
+  items: { question: string; reponse: string; media: string | null }[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="faq container">
+  {
+    items.map((item) => (
+      <div class="faq__item">
+        {item.media?.endsWith(".mp4") && (
+          <video class="faq__media" src={item.media} autoplay muted loop playsinline controls aria-label={site.accessibilite.videoDecorative} />
+        )}
+        {item.media?.endsWith(".webp") && (
+          <picture class="faq__media">
+            <source media="(prefers-reduced-motion: no-preference)" srcset={item.media} />
+            <img src={item.media.replace(/\.webp$/, "-fixe.webp")} alt="" loading="lazy" />
+          </picture>
+        )}
+        <details>
+          <summary>
+            <Texte as="span" texte={item.question} />
+          </summary>
+          <Texte class="faq__reponse" texte={item.reponse} />
+        </details>
+      </div>
+    ))
+  }
+</section>
+
+<script>
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll<HTMLVideoElement>(".faq__media").forEach((v) => v.pause?.());
+  }
+</script>
+
+<style>
+  .faq {
+    display: grid;
+    gap: var(--space-lg) var(--space-xl);
+    padding-block: var(--space-md) var(--space-2xl);
+  }
+
+  .faq__item {
+    display: grid;
+    align-content: start;
+    gap: var(--space-md);
+  }
+
+  .faq__media {
+    justify-self: center;
+    width: min(100%, 18rem);
+    aspect-ratio: 16 / 10;
+  }
+
+  .faq__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  video.faq__media {
+    height: auto;
+    object-fit: contain;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Pastille ronde « + » / « − » */
+  summary::before {
+    content: "+";
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid var(--color-bleu-fonce);
+    border-radius: 50%;
+    color: var(--color-bleu-fonce);
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  details[open] summary::before {
+    content: "−";
+  }
+
+  .faq :global(.faq__reponse) {
+    padding: var(--space-sm) 0 0 calc(1.9rem + var(--space-sm));
+    font-size: var(--text-sm);
+  }
+
+  @media (min-width: 48rem) {
+    .faq {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,252 @@
+---
+/**
+ * Colonne de présentation + formulaire (contact, candidature).
+ * Formulaire de démonstration : rien n'est envoyé, un message le signale à la validation.
+ */
+import { Image } from "astro:assets";
+import Texte from "../ui/Texte.astro";
+import { inline } from "../../lib/inline";
+import { getImage } from "../../lib/images";
+
+interface Champ {
+  nom: string;
+  label: string;
+  type: string;
+  requis: boolean;
+  largeur: string;
+  autocomplete?: string;
+  accept?: string;
+  aide?: string;
+}
+
+interface Props {
+  id: string;
+  aside: { image: string; titre: string; paragraphes: string[] };
+  formulaire: {
+    label: string;
+    champs: Champ[];
+    obligatoire: string;
+    consentement: string;
+    politique: string;
+    bouton: string;
+    messageDemo: string;
+  };
+}
+
+const { id, aside, formulaire: f } = Astro.props;
+// Les chemins d'image du JSON sont relatifs au fichier de contenu : on garde le nom sous src/assets/images/
+const image = getImage(aside.image.replace("../../assets/images/", ""));
+---
+
+<div class="contact-form container">
+  <div class="contact-form__aside">
+    <Image class="contact-form__deco" src={image} alt="" widths={[200, 400]} sizes="10rem" />
+    <Texte as="h2" class="contact-form__titre" texte={aside.titre} />
+    {aside.paragraphes.map((p) => <Texte texte={p} />)}
+  </div>
+
+  <form class="formulaire" id={id} aria-label={f.label} novalidate data-demo={f.messageDemo}>
+    <p class="formulaire__obligatoire">{f.obligatoire}</p>
+    <div class="formulaire__champs">
+      {
+        f.champs.map((c) => {
+          const idChamp = `${id}-${c.nom}`;
+          const aide = c.aide ? `${idChamp}-aide` : undefined;
+          return (
+            <div class:list={["champ", `champ--${c.largeur}`, `champ--${c.type}`]}>
+              <label for={idChamp}>
+                {c.label}
+                {c.requis && <span aria-hidden="true">*</span>}
+              </label>
+              {c.type === "textarea" ? (
+                <textarea id={idChamp} name={c.nom} rows="6" required={c.requis} />
+              ) : (
+                <input
+                  id={idChamp}
+                  name={c.nom}
+                  type={c.type}
+                  required={c.requis}
+                  autocomplete={c.autocomplete}
+                  accept={c.accept}
+                  aria-describedby={aide}
+                />
+              )}
+              {aide && (
+                <p class="champ__aide" id={aide}>
+                  {c.aide}
+                </p>
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="formulaire__consentement">
+      <input type="checkbox" id={`${id}-consentement`} name="consentement" required />
+      <label for={`${id}-consentement`}>{f.consentement}</label>
+    </div>
+    <p class="formulaire__politique" set:html={inline(f.politique)} />
+
+    <button type="submit" class="formulaire__bouton">{f.bouton}</button>
+    <p class="formulaire__statut" role="status" aria-live="polite"></p>
+  </form>
+</div>
+
+<script>
+  // Démonstration : validation native du navigateur, puis message sans envoi
+  document.querySelectorAll<HTMLFormElement>("form[data-demo]").forEach((form) => {
+    const statut = form.querySelector<HTMLElement>(".formulaire__statut")!;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      statut.textContent = form.dataset.demo ?? "";
+      form.reset();
+    });
+  });
+</script>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: var(--space-xl);
+    padding-block: var(--space-lg) var(--space-2xl);
+  }
+
+  .contact-form__aside {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+
+  .contact-form__deco {
+    position: absolute;
+    top: -2rem;
+    left: -1.5rem;
+    width: 7rem;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  .contact-form :global(.contact-form__titre) {
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-md);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .formulaire {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .formulaire__obligatoire,
+  .champ__aide {
+    font-size: var(--text-xs);
+  }
+
+  .formulaire__champs {
+    display: grid;
+    gap: var(--space-lg) var(--space-md);
+  }
+
+  .champ {
+    display: grid;
+    gap: var(--space-2xs);
+    font-size: var(--text-sm);
+  }
+
+  .champ input,
+  .champ textarea {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: 0;
+    border-bottom: 2px solid var(--color-bleu-nuit);
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+  }
+
+  .champ textarea {
+    resize: vertical;
+  }
+
+  .champ input:focus-visible,
+  .champ textarea:focus-visible {
+    outline: none;
+    border-bottom-color: var(--color-bleu-clair);
+    box-shadow: 0 2px 0 var(--color-bleu-clair);
+  }
+
+  .champ--file input {
+    padding-block: 0.75rem;
+    font-size: var(--text-xs);
+  }
+
+  .formulaire__consentement {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+  }
+
+  .formulaire__consentement input {
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.2em;
+    accent-color: var(--color-bleu-fonce);
+  }
+
+  .formulaire__politique {
+    font-size: var(--text-sm);
+  }
+
+  .formulaire__bouton {
+    justify-self: start;
+    padding: 0.8em 3.5em;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-bleu-fonce);
+    color: var(--color-blanc);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: background-color var(--transition);
+  }
+
+  .formulaire__bouton:hover {
+    background: var(--color-bleu-nuit);
+  }
+
+  .formulaire__statut:not(:empty) {
+    padding: var(--space-sm) var(--space-md);
+    border-left: 4px solid var(--color-jaune);
+    background: var(--color-beige);
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (min-width: 48rem) {
+    .contact-form {
+      grid-template-columns: 1fr 1.1fr;
+      column-gap: var(--space-2xl);
+    }
+
+    .formulaire__champs {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .champ--plein {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 47.99rem) {
+    .contact-form__deco {
+      display: none;
+    }
+  }
+</style>

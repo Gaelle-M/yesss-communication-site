@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TitrePage from "../components/ui/TitrePage.astro";
+
+const page = await getEntry("legal", "mentions-legales");
+if (!page) throw new Error("Contenu introuvable : src/content/legal/mentions-legales.md");
+const { Content } = await render(page);
+---
+
+<BaseLayout title={page.data.meta.titre} description={page.data.meta.description} header="plein">
+  <TitrePage texte={page.data.titre} />
+  <div class="legal container">
+    <Content />
+  </div>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 52rem;
+    padding-bottom: var(--space-2xl);
+    font-size: var(--text-sm);
+  }
+
+  .legal :global(h2) {
+    margin: var(--space-lg) 0 var(--space-sm);
+    color: var(--color-jaune);
+    font-size: var(--text-xl);
+  }
+
+  .legal :global(p),
+  .legal :global(ul) {
+    margin: 0 0 var(--space-sm);
+  }
+
+  .legal :global(a) {
+    overflow-wrap: anywhere;
+  }
+</style>

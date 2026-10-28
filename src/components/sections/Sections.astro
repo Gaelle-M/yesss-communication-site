@@ -15,6 +15,9 @@ import SectionValeurs from "./SectionValeurs.astro";
 import SectionEngagements from "./SectionEngagements.astro";
 import SectionEquipe from "./SectionEquipe.astro";
 import SectionPhotos from "./SectionPhotos.astro";
+import SectionFaq from "./SectionFaq.astro";
+import SectionPartenaire from "./SectionPartenaire.astro";
+import SectionTelechargement from "./SectionTelechargement.astro";
 
 interface Props {
   sections: { type: string; [cle: string]: unknown }[];
@@ -36,6 +39,9 @@ const composants: Record<string, (props: any) => any> = {
   engagements: SectionEngagements,
   equipe: SectionEquipe,
   photos: SectionPhotos,
+  faq: SectionFaq,
+  partenaire: SectionPartenaire,
+  telechargement: SectionTelechargement,
 };
 
 const { sections } = Astro.props;

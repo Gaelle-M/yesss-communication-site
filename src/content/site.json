@@ -29,7 +29,8 @@
       "precedent": "Photo précédente",
       "suivant": "Photo suivante",
       "position": "Photo {n} sur {total}"
-    }
+    },
+    "videoDecorative": "Animation d'illustration (sans son)"
   },
   "menu": {
     "gauche": [

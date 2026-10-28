@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "titre": "Conditions Générales de Ventes | Yesss Communication",
+    "description": "Conditions générales de vente de Yesss Communication, agence conseil en communication à Marseille, à télécharger au format PDF."
+  },
+  "titre": "Conditions Générales de Ventes",
+  "sections": [
+    {
+      "type": "telechargement",
+      "bouton": {
+        "label": "Téléchargez nos Conditions Générales de Ventes",
+        "href": "/documents/cgv-yesss-communication.pdf"
+      },
+      "format": "PDF"
+    }
+  ]
+}

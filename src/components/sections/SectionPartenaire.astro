@@ -1,0 +1,102 @@
+---
+/** Encart partenaire sur fond bleu clair : photo, texte, nom en script, bouton */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Texte from "../ui/Texte.astro";
+import Wave from "../ui/Wave.astro";
+import site from "../../content/site.json";
+
+interface Props {
+  image: { src: ImageMetadata; alt: string };
+  texte: string;
+  nom: string;
+  bouton: { label: string; href: string };
+}
+
+const { image, texte, nom, bouton } = Astro.props;
+const externe = /^https?:\/\//.test(bouton.href);
+---
+
+<section class="partenaire">
+  <Wave color="var(--color-fond)" />
+  <div class="partenaire__inner container">
+    <Image class="partenaire__photo" src={image.src} alt={image.alt} widths={[300, 600]} sizes="18rem" />
+    <div class="partenaire__texte">
+      <Texte texte={texte} class="partenaire__intro" />
+      <Texte texte={nom} class="partenaire__nom" />
+      <a class="partenaire__bouton" href={bouton.href} target={externe ? "_blank" : undefined} rel={externe ? "noopener" : undefined}>
+        {bouton.label}
+        {externe && <span class="visually-hidden"> {site.accessibilite.nouvelOnglet}</span>}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .partenaire {
+    position: relative;
+    padding-block: calc(var(--wave-height) + var(--space-md)) var(--space-xl);
+    background: var(--color-bleu-clair);
+    color: var(--color-blanc);
+  }
+
+  .partenaire__inner {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+    text-align: center;
+  }
+
+  .partenaire__photo {
+    width: min(100%, 18rem);
+  }
+
+  .partenaire__texte {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+  }
+
+  .partenaire :global(.partenaire__intro) {
+    max-width: 24rem;
+    color: var(--color-bleu-nuit);
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+  }
+
+  .partenaire :global(.partenaire__nom) {
+    font-family: var(--font-script);
+    font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+    line-height: 1.1;
+  }
+
+  .partenaire__bouton {
+    margin-top: var(--space-xs);
+    padding: 0.7em 2.5em;
+    border: 2px solid currentColor;
+    border-radius: var(--radius-pill);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color var(--transition), color var(--transition);
+  }
+
+  .partenaire__bouton:hover {
+    background: var(--color-blanc);
+    color: var(--color-bleu-nuit);
+  }
+
+  @media (min-width: 48rem) {
+    .partenaire__inner {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      text-align: left;
+    }
+
+    .partenaire__texte {
+      justify-items: start;
+    }
+  }
+</style>

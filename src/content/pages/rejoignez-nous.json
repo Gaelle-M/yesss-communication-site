@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "titre": "Rejoignez-nous | Yesss Communication",
+    "description": "Vous souhaitez débuter une nouvelle aventure ? Rejoignez-nous ! Chez Yesss communication, agence sur Marseille, environnement de travail positif..."
+  },
+  "titre": "Envie de rejoindre la team Yesss ? \\ {script jaune:Postulez !}",
+  "aside": {
+    "image": "../../assets/images/formulaires/illustration-contact.webp",
+    "titre": "{bleu:Un 1er message} et peut-être le début d'une belle aventure.",
+    "paragraphes": [
+      "Que vous soyez en quête de sens, de défis ou d’une équipe qui construit les projets ensemble… venez écrire la suite avec nous !",
+      "**On s’écrit ?** \\ [welcome@yesss-communication.fr](mailto:welcome@yesss-communication.fr)",
+      "**On s’appelle ?** \\ **[04 84 99 05 05](tel:+33484990505)**"
+    ]
+  },
+  "formulaire": {
+    "obligatoire": "* Champs obligatoires",
+    "consentement": "En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées dans le cadre de ma demande.",
+    "politique": "Vous référer à notre [politique de confidentialité](/politique-de-confidentialite/).",
+    "bouton": "Envoyer",
+    "messageDemo": "Merci ! Ce formulaire est une démonstration : aucun message n'a été envoyé.",
+    "label": "Formulaire de candidature",
+    "champs": [
+      {
+        "nom": "nom",
+        "label": "Votre nom",
+        "type": "text",
+        "requis": true,
+        "autocomplete": "family-name",
+        "largeur": "demi"
+      },
+      {
+        "nom": "prenom",
+        "label": "Votre prénom",
+        "type": "text",
+        "requis": true,
+        "autocomplete": "given-name",
+        "largeur": "demi"
+      },
+      {
+        "nom": "telephone",
+        "label": "Téléphone",
+        "type": "tel",
+        "requis": true,
+        "autocomplete": "tel",
+        "largeur": "demi"
+      },
+      {
+        "nom": "email",
+        "label": "Mail",
+        "type": "email",
+        "requis": true,
+        "autocomplete": "email",
+        "largeur": "demi"
+      },
+      {
+        "nom": "cv",
+        "label": "Joindre un CV",
+        "type": "file",
+        "requis": true,
+        "accept": ".pdf,.jpg,.jpeg,.doc,.docx",
+        "aide": "Formats acceptés : PDF, JPG, DOC, DOCX",
+        "largeur": "demi"
+      },
+      {
+        "nom": "lettre",
+        "label": "Joindre une lettre de motivation",
+        "type": "file",
+        "requis": true,
+        "accept": ".pdf,.jpg,.jpeg,.doc,.docx",
+        "aide": "Formats acceptés : PDF, JPG, DOC, DOCX",
+        "largeur": "demi"
+      },
+      {
+        "nom": "sujet",
+        "label": "Sujet",
+        "type": "text",
+        "requis": false,
+        "largeur": "plein"
+      },
+      {
+        "nom": "message",
+        "label": "Message",
+        "type": "textarea",
+        "requis": false,
+        "largeur": "plein"
+      }
+    ]
+  }
+}

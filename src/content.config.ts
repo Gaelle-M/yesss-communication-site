@@ -74,7 +74,14 @@ function sectionSchema(image: () => z.ZodTypeAny) {
       bouton,
     }),
     z.object({ type: z.literal("chapo"), surtitre: z.string(), paragraphes: z.array(z.string()) }),
-    z.object({ type: z.literal("texte"), paragraphes: z.array(z.string()) }),
+    z.object({ type: z.literal("texte"), titre: z.string().optional(), paragraphes: z.array(z.string()) }),
+    z.object({
+      type: z.literal("faq"),
+      // media : chemin d'une vidéo (.mp4) ou d'une image animée (.webp, avec sa version « -fixe.webp ») dans public/
+      items: z.array(z.object({ question: z.string(), reponse: z.string(), media: z.string().nullable() })),
+    }),
+    z.object({ type: z.literal("partenaire"), image: img, texte: z.string(), nom: z.string(), bouton }),
+    z.object({ type: z.literal("telechargement"), bouton, format: z.string() }),
     z.object({
       type: z.literal("manifeste"),
       texte: z.string(),
@@ -121,10 +128,17 @@ const expertises = defineCollection({
     }),
 });
 
-// Pages « agence » (raison d'être, engagements, valeurs, nous) : un JSON par page dans src/content/agence/
+// Pages composées de sections (raison d'être, engagements, valeurs, nous, politique de confidentialité, CGV) :
+// un JSON par page dans src/content/agence/
 const agence = defineCollection({
   loader: glob({ pattern: "*.json", base: "./src/content/agence" }),
   schema: ({ image }) => z.object({ meta, titre: z.string(), sections: z.array(sectionSchema(image)) }),
 });
 
-export const collections = { projets, expertises, agence };
+// Pages de texte long en Markdown (mentions légales) : src/content/legal/
+const legal = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/legal" }),
+  schema: z.object({ titre: z.string(), meta }),
+});
+
+export const collections = { projets, expertises, agence, legal };

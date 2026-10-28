@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TitrePage from "../components/ui/TitrePage.astro";
+import ContactFormulaire from "../components/sections/ContactFormulaire.astro";
+import page from "../content/pages/rejoignez-nous.json";
+---
+
+<BaseLayout title={page.meta.titre} description={page.meta.description} header="plein">
+  <TitrePage texte={page.titre} />
+  <ContactFormulaire id="formulaire-rejoignez-nous" aside={page.aside} formulaire={page.formulaire} />
+</BaseLayout>

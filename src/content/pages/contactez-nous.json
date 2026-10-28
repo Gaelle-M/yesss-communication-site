@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "titre": "Contactez-nous | Yesss Communication",
+    "description": "Vous avez une idée précise ou juste une envie de faire bouger les lignes, on vous écoute. On vous répond. N'attendez plus, contactez-nous !"
+  },
+  "titre": "Envie de collaborer ? \\ {script jaune:Parlons-en}",
+  "aside": {
+    "image": "../../assets/images/formulaires/illustration-contact.webp",
+    "titre": "{bleu:Un 1er message} et peut-être le début d'une belle aventure.",
+    "paragraphes": [
+      "Que vous ayez une idée précise ou juste une envie de faire bouger les lignes, on vous écoute. On vous répond. On avance ensemble.",
+      "**On s’écrit ?** \\ [welcome@yesss-communication.fr](mailto:welcome@yesss-communication.fr)",
+      "**On s’appelle ?** \\ **[04 84 99 05 05](tel:+33484990505)**"
+    ]
+  },
+  "formulaire": {
+    "obligatoire": "* Champs obligatoires",
+    "consentement": "En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées dans le cadre de ma demande.",
+    "politique": "Vous référer à notre [politique de confidentialité](/politique-de-confidentialite/).",
+    "bouton": "Envoyer",
+    "messageDemo": "Merci ! Ce formulaire est une démonstration : aucun message n'a été envoyé.",
+    "label": "Formulaire de contact",
+    "champs": [
+      {
+        "nom": "nom",
+        "label": "Votre nom",
+        "type": "text",
+        "requis": true,
+        "autocomplete": "family-name",
+        "largeur": "demi"
+      },
+      {
+        "nom": "prenom",
+        "label": "Votre prénom",
+        "type": "text",
+        "requis": true,
+        "autocomplete": "given-name",
+        "largeur": "demi"
+      },
+      {
+        "nom": "email",
+        "label": "Email",
+        "type": "email",
+        "requis": true,
+        "autocomplete": "email",
+        "largeur": "demi"
+      },
+      {
+        "nom": "telephone",
+        "label": "Téléphone",
+        "type": "tel",
+        "requis": true,
+        "autocomplete": "tel",
+        "largeur": "demi"
+      },
+      {
+        "nom": "sujet",
+        "label": "Sujet",
+        "type": "text",
+        "requis": false,
+        "largeur": "plein"
+      },
+      {
+        "nom": "message",
+        "label": "Votre message",
+        "type": "textarea",
+        "requis": false,
+        "largeur": "plein"
+      }
+    ]
+  }
+}

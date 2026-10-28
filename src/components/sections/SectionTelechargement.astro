@@ -1,0 +1,42 @@
+---
+/** Bouton de téléchargement d'un document (CGV…) */
+
+interface Props {
+  bouton: { label: string; href: string };
+  format: string;
+}
+
+const { bouton, format } = Astro.props;
+---
+
+<section class="telechargement container">
+  <a class="telechargement__bouton" href={bouton.href} download>
+    {bouton.label}
+    <span class="visually-hidden"> ({format})</span>
+  </a>
+</section>
+
+<style>
+  .telechargement {
+    padding-block: var(--space-md) var(--space-2xl);
+    text-align: center;
+  }
+
+  .telechargement__bouton {
+    display: inline-block;
+    padding: 0.9em 2.5em;
+    border-radius: var(--radius-pill);
+    background: var(--color-jaune);
+    color: var(--color-bleu-nuit);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color var(--transition), color var(--transition);
+  }
+
+  .telechargement__bouton:hover {
+    background: var(--color-bleu-nuit);
+    color: var(--color-jaune);
+  }
+</style>

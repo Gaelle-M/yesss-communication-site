@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TitrePage from "../components/ui/TitrePage.astro";
+import Texte from "../components/ui/Texte.astro";
+import Button from "../components/ui/Button.astro";
+import page from "../content/pages/404.json";
+---
+
+<BaseLayout title={page.meta.titre} description={page.meta.description} header="plein">
+  <TitrePage texte={page.titre} />
+  <div class="introuvable container">
+    <Texte texte={page.texte} />
+    <div class="introuvable__boutons">
+      {page.boutons.map((b, i) => <Button {...b} variant={i === 0 ? "jaune" : "bleu"} />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .introuvable {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-lg);
+    max-width: 40rem;
+    padding-bottom: var(--space-2xl);
+    text-align: center;
+  }
+
+  .introuvable__boutons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+</style>
