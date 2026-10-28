@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# maquettes et fichiers de référence (non versionnés)
+ref/

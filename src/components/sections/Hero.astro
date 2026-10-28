@@ -1,0 +1,133 @@
+---
+import { Image } from "astro:assets";
+import { getImage } from "../../lib/images";
+
+interface Props {
+  image: string;
+  debut: string;
+  mots: string[];
+  fin: string;
+}
+
+const { image, debut, mots, fin } = Astro.props;
+// Durée d'affichage de chaque mot (s), reprise du site actuel
+const duree = 1.83;
+---
+
+<section class="hero">
+  <Image class="hero__fond" src={getImage(image)} alt="" widths={[800, 1000]} sizes="100vw" loading="eager" />
+  <div class="hero__inner container">
+    <p class="hero__texte">
+      <span class="visually-hidden">{debut} {mots.join(", ")} {fin}</span>
+      <span class="hero__ligne" aria-hidden="true">
+        {debut}
+        <span class="hero__mots" style={`--duree-cycle: ${duree * mots.length}s`}>
+          {mots.map((mot, i) => <span class="hero__mot" style={`animation-delay: ${i * duree}s`}>{mot}</span>)}
+        </span>
+      </span>
+      <span class="hero__ligne hero__ligne--fin" aria-hidden="true">{fin}</span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    min-height: clamp(26rem, 45vw, 33rem);
+    padding-top: var(--header-height);
+    overflow: hidden;
+    background: var(--color-bleu-fonce);
+    color: var(--color-texte-inverse);
+  }
+
+  .hero__fond {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .hero__texte {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    text-align: center;
+  }
+
+  .hero__ligne {
+    display: block;
+  }
+
+  .hero__mots {
+    position: relative;
+    display: inline-block;
+    min-width: 6.5em;
+    margin-left: 0.15em;
+    height: 1.9em;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .hero__mot {
+    position: absolute;
+    inset: 0 auto auto 0;
+    padding-left: 0.1em;
+    color: var(--color-jaune);
+    font-family: var(--font-script);
+    font-size: 1.9em;
+    font-weight: var(--font-weight-regular);
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: hero-mot var(--duree-cycle) infinite;
+  }
+
+  @keyframes hero-mot {
+    0%, 5% { opacity: 0; transform: translateY(100%); }
+    15%, 40% { opacity: 1; transform: translateY(0); }
+    45% { opacity: 0; transform: translateY(-100%); }
+    46%, 100% { opacity: 0; transform: translateY(100%); }
+  }
+
+  /* Sans animation : on affiche le premier mot, fixe */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__mot {
+      animation: none;
+    }
+    .hero__mot:first-child {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 47.99rem) {
+    .hero__ligne:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__mots {
+      width: 100%;
+      margin-left: 0;
+      text-align: center;
+    }
+
+    .hero__mot {
+      right: 0;
+      padding-left: 0;
+    }
+  }
+</style>

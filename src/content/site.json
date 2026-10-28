@@ -1,0 +1,84 @@
+{
+  "nom": "Yesss Communication",
+  "langue": "fr",
+  "accessibilite": {
+    "liensEvitement": [
+      { "label": "Aller au menu", "href": "#en-tete" },
+      { "label": "Aller au contenu principal", "href": "#contenu" },
+      { "label": "Aller au pied de page", "href": "#pied-de-page" }
+    ],
+    "logoAccueil": "Yesss Communication, retour à l'accueil",
+    "menuPrincipal": "Menu principal",
+    "ouvrirMenu": "Ouvrir le menu",
+    "fermerMenu": "Fermer le menu",
+    "sousMenu": "Afficher le sous-menu",
+    "menuPiedDePage": "Liens utiles",
+    "reseauxSociaux": "Réseaux sociaux",
+    "nouvelOnglet": "(nouvel onglet)"
+  },
+  "menu": {
+    "gauche": [
+      { "label": "Notre raison d’être", "href": "/notre-raison-detre/" },
+      { "label": "Nos engagements", "href": "/nos-engagements/" },
+      { "label": "Nos valeurs", "href": "/nos-valeurs/" }
+    ],
+    "droite": [
+      { "label": "Nous", "href": "/nous/" },
+      {
+        "label": "Nos expertises",
+        "href": "/nos-expertises/",
+        "enfants": [
+          { "label": "Stratégie de communication responsable", "href": "/nos-expertises/strategie-de-communication-responsable/" },
+          { "label": "Communication digitale & réseaux sociaux", "href": "/nos-expertises/communication-digitale-reseaux-sociaux/" },
+          { "label": "Création de sites internet", "href": "/nos-expertises/creation-de-sites-internet/" },
+          { "label": "Contenus éditoriaux & storytelling", "href": "/nos-expertises/contenus-editoriaux-storytelling/" },
+          { "label": "Campagnes UGC & Influence", "href": "/nos-expertises/campagnes-ugc-influence/" },
+          { "label": "Identité visuelle & design graphique", "href": "/nos-expertises/identite-visuelle-design-graphique/" },
+          { "label": "Communication print", "href": "/nos-expertises/communication-print/" },
+          { "label": "Création de packaging", "href": "/nos-expertises/creation-de-packaging/" }
+        ]
+      },
+      { "label": "Ils disent Yesss", "href": "/projets/" },
+      { "label": "Contactez-nous", "href": "/contactez-nous/" }
+    ]
+  },
+  "footer": {
+    "liens": [
+      { "label": "Contactez-nous", "href": "/contactez-nous/" },
+      { "label": "Rejoignez-nous", "href": "/rejoignez-nous/" },
+      { "label": "Charte éthique", "href": "/documents/charte-ethique-des-affaires.pdf" },
+      { "label": "Mentions légales", "href": "/mentions-legales/" },
+      { "label": "Politique de confidentialité", "href": "/politique-de-confidentialite/" },
+      { "label": "CGV", "href": "/cgv/" }
+    ],
+    "coordonnees": {
+      "nom": "YESSS COMMUNICATION",
+      "adresse": ["219 Boulevard Rabatau", "13010 Marseille"],
+      "telephone": { "label": "04 84 99 05 05", "href": "tel:+33484990505" },
+      "email": "welcome@yesss-communication.fr"
+    },
+    "suivezNous": [
+      "Suivez-",
+      { "text": "nous", "style": "script" }
+    ],
+    "reseaux": [
+      { "nom": "LinkedIn", "icone": "linkedin", "href": "https://linkedin.com/company/yesss-communication/" },
+      { "nom": "Instagram", "icone": "instagram", "href": "https://instagram.com/yessscommunication/" },
+      { "nom": "TikTok", "icone": "tiktok", "href": "https://tiktok.com/@yessscommunication" }
+    ],
+    "reseau": {
+      "titre": "YESSS COMMUNICATION",
+      "texte": "est membre actif du réseau",
+      "logo": { "image": "footer/logo-bni.webp", "alt": "BNI", "href": "https://bni-bouchesdurhone.fr/13---bouches-du-rhone-13-37-bni-castel-one-marseille/fr/index" }
+    },
+    "hebergement": {
+      "texte": "Notre site est hébergé par",
+      "lien": { "label": "Data Campus, service d'hébergement durable.", "href": "https://datacampus.fr/" }
+    },
+    "certifications": [
+      { "image": "footer/logo-positive-company.webp", "alt": "Positive Company, entreprise certifiée", "href": "https://www.positive-company.eu/" },
+      { "image": "footer/logo-meta.webp", "alt": "Logo Meta certification Clémentine Moulin", "href": "/nous/" }
+    ],
+    "copyright": "YESSS COMMUNICATION © 2025 | Tous droits réservés | Mis à jour en 2026"
+  }
+}

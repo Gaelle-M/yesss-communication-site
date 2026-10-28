@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+import RichText, { type Segment } from "../ui/RichText.astro";
+import Button from "../ui/Button.astro";
+import Wave from "../ui/Wave.astro";
+import { getImage } from "../../lib/images";
+
+interface Props {
+  surtitre: string;
+  titre: Segment[];
+  image: { src: string; alt: string };
+  colonneGauche: (string | { citation: string })[];
+  colonneDroite: string[];
+  bouton: { label: string; href: string };
+}
+
+const { surtitre, titre, image, colonneGauche, colonneDroite, bouton } = Astro.props;
+---
+
+<section class="raison" aria-labelledby="raison-titre">
+  <Wave color="var(--color-bleu-nuit)" flip />
+  <div class="raison__inner container">
+    <div class="raison__gauche">
+      <p class="raison__surtitre">{surtitre}</p>
+      <h2 class="raison__titre" id="raison-titre"><RichText segments={titre} /></h2>
+      <div class="raison__texte">
+        {
+          colonneGauche.map((bloc) =>
+            typeof bloc === "string" ? (
+              <p>{bloc}</p>
+            ) : (
+              <blockquote class="raison__citation">
+                <p>{bloc.citation}</p>
+              </blockquote>
+            ),
+          )
+        }
+      </div>
+    </div>
+
+    <div class="raison__droite">
+      <Image class="raison__photo" src={getImage(image.src)} alt={image.alt} widths={[400, 609, 800]} sizes="(min-width: 64rem) 38rem, 90vw" />
+      <div class="raison__texte">
+        {colonneDroite.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+
+    <div class="raison__bouton">
+      <Button {...bouton} variant="bleu" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .raison {
+    position: relative;
+    padding-block: calc(var(--wave-height) + var(--space-md)) var(--space-2xl);
+  }
+
+  .raison__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+  }
+
+  .raison__surtitre {
+    color: var(--color-jaune);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .raison__titre {
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-2xl);
+  }
+
+  .raison__titre :global(.txt-script) {
+    margin-left: -0.1em;
+  }
+
+  .raison__texte {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .raison__citation {
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .raison__droite {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .raison__photo {
+    width: 100%;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+
+  .raison__bouton {
+    text-align: center;
+  }
+
+  @media (min-width: 64rem) {
+    .raison__inner {
+      grid-template-columns: 1fr 1fr;
+      column-gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* La photo déborde vers le haut, sur la vague, comme sur le site actuel */
+    .raison__photo {
+      position: relative;
+      z-index: 1;
+      margin-top: calc(-1 * (var(--wave-height) + 8rem));
+    }
+
+    .raison__bouton {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

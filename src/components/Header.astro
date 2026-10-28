@@ -1,0 +1,336 @@
+---
+import { Image } from "astro:assets";
+import site from "../content/site.json";
+import logo from "../assets/images/logo-yesss.svg";
+
+const { menu, accessibilite: a11y } = site;
+const current = Astro.url.pathname;
+---
+
+<header class="header" id="en-tete">
+  <div class="header__inner container">
+    <a class="header__logo" href="/">
+      <Image src={logo} alt={a11y.logoAccueil} width={170} loading="eager" />
+    </a>
+
+    <button
+      class="header__burger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-principal"
+      data-label-open={a11y.ouvrirMenu}
+      data-label-close={a11y.fermerMenu}
+    >
+      <span class="visually-hidden">{a11y.ouvrirMenu}</span>
+      <span class="header__burger-bars" aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav" id="menu-principal" aria-label={a11y.menuPrincipal}>
+      {
+        [menu.gauche, menu.droite].map((groupe) => (
+          <ul class="nav__list" role="list">
+            {groupe.map((item) => (
+              <li class:list={["nav__item", { "nav__item--parent": "enfants" in item }]}>
+                <a class="nav__link" href={item.href} aria-current={current === item.href ? "page" : undefined}>
+                  {item.label}
+                </a>
+                {"enfants" in item && item.enfants && (
+                  <>
+                    <button
+                      class="nav__toggle"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls={`sous-menu-${item.href.replaceAll("/", "")}`}
+                    >
+                      <span class="visually-hidden">
+                        {a11y.sousMenu} {item.label}
+                      </span>
+                    </button>
+                    <ul class="nav__sub" id={`sous-menu-${item.href.replaceAll("/", "")}`} role="list">
+                      {item.enfants.map((enfant) => (
+                        <li>
+                          <a class="nav__sublink" href={enfant.href}>
+                            {enfant.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>(".header");
+  const burger = header?.querySelector<HTMLButtonElement>(".header__burger");
+  const burgerLabel = burger?.querySelector(".visually-hidden");
+
+  function setMenu(open: boolean) {
+    if (!burger || !header) return;
+    burger.setAttribute("aria-expanded", String(open));
+    if (burgerLabel) burgerLabel.textContent = (open ? burger.dataset.labelClose : burger.dataset.labelOpen) ?? "";
+    header.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
+  burger?.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+
+  header?.querySelectorAll<HTMLButtonElement>(".nav__toggle").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      toggle.setAttribute("aria-expanded", String(toggle.getAttribute("aria-expanded") !== "true"));
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const openToggle = header?.querySelector<HTMLButtonElement>('.nav__toggle[aria-expanded="true"]');
+    if (openToggle) {
+      openToggle.setAttribute("aria-expanded", "false");
+      openToggle.focus();
+    } else if (header?.classList.contains("is-open")) {
+      setMenu(false);
+      burger?.focus();
+    }
+  });
+</script>
+
+<style>
+  .header {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 10;
+    color: var(--color-texte-inverse);
+  }
+
+  .header__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--header-height);
+  }
+
+  .header__logo {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: clamp(7rem, 5rem + 5vw, 8.5rem);
+  }
+
+  .nav__list {
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav__link,
+  .nav__sublink {
+    text-decoration: none;
+  }
+
+  .nav__link:hover,
+  .nav__sublink:hover,
+  .nav__link[aria-current="page"] {
+    color: var(--color-jaune);
+  }
+
+  .nav__toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .nav__toggle::after {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-25%) rotate(45deg);
+    transition: transform var(--transition);
+  }
+
+  .nav__toggle[aria-expanded="true"]::after {
+    transform: translateY(25%) rotate(-135deg);
+  }
+
+  .nav__sub {
+    display: none;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nav__toggle[aria-expanded="true"] + .nav__sub {
+    display: block;
+  }
+
+  /* ---------- Mobile : burger + panneau plein écran ---------- */
+  @media (max-width: 63.99rem) {
+    .header__burger {
+      position: absolute;
+      right: 0;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .header__burger-bars,
+    .header__burger-bars::before,
+    .header__burger-bars::after {
+      display: block;
+      width: 1.75rem;
+      height: 2px;
+      background: currentColor;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .header__burger-bars {
+      position: relative;
+    }
+
+    .header__burger-bars::before,
+    .header__burger-bars::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .header__burger-bars::before {
+      top: -0.55rem;
+    }
+
+    .header__burger-bars::after {
+      top: 0.55rem;
+    }
+
+    .is-open .header__burger-bars {
+      background: transparent;
+    }
+
+    .is-open .header__burger-bars::before {
+      transform: translateY(0.55rem) rotate(45deg);
+    }
+
+    .is-open .header__burger-bars::after {
+      transform: translateY(-0.55rem) rotate(-45deg);
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      display: none;
+      padding: calc(var(--header-height) + var(--space-md)) var(--gutter) var(--space-xl);
+      overflow-y: auto;
+      background: var(--color-bleu-nuit);
+    }
+
+    .is-open .nav {
+      display: block;
+    }
+
+    .nav__list {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .nav__list + .nav__list {
+      margin-top: var(--space-xs);
+    }
+
+    .nav__item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .nav__sub {
+      flex-basis: 100%;
+      padding: var(--space-2xs) 0 0 var(--space-sm);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-regular);
+    }
+
+    .nav__sub li + li {
+      margin-top: var(--space-2xs);
+    }
+  }
+
+  /* ---------- Desktop : menu en 2 blocs de part et d'autre du logo ---------- */
+  @media (min-width: 64rem) {
+    .header__burger {
+      display: none;
+    }
+
+    .nav {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__list {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 2.25rem);
+      font-size: var(--text-sm);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .nav__item--parent {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav__sub {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: max-content;
+      max-width: 22rem;
+      padding: var(--space-xs) 0;
+      border-radius: 0.75rem;
+      background: var(--color-blanc);
+      color: var(--color-texte);
+      font-weight: var(--font-weight-regular);
+      box-shadow: 0 0.75rem 2rem rgb(3 40 52 / 0.2);
+      transform: translateX(-50%);
+    }
+
+    /* Ouverture au survol en plus du bouton */
+    .nav__item--parent:hover > .nav__sub {
+      display: block;
+    }
+
+    .nav__sublink {
+      display: block;
+      padding: var(--space-2xs) var(--space-md);
+    }
+
+    .nav__sublink:hover {
+      background: var(--color-beige);
+      color: var(--color-bleu-fonce);
+    }
+  }
+</style>

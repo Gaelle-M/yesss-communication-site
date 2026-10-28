@@ -1,0 +1,64 @@
+---
+import RichText, { type Segment } from "../ui/RichText.astro";
+
+interface Props {
+  accroche: Segment[];
+  titre: Segment[];
+  paragraphes: string[];
+}
+
+const { accroche, titre, paragraphes } = Astro.props;
+---
+
+<section class="intro">
+  <div class="intro__inner container">
+    <p class="intro__accroche"><RichText segments={accroche} /></p>
+    <div class="intro__texte">
+      <h1 class="intro__titre"><RichText segments={titre} /></h1>
+      {paragraphes.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    padding-block: var(--space-2xl);
+  }
+
+  .intro__inner {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+    align-items: center;
+  }
+
+  .intro__accroche {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .intro__texte {
+    display: grid;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  .intro__titre {
+    font-size: var(--text-md);
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 48rem) {
+    .intro__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+
+    .intro__accroche,
+    .intro__texte {
+      text-align: left;
+    }
+  }
+</style>

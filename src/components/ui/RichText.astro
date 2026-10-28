@@ -1,0 +1,21 @@
+---
+/**
+ * Affiche un texte découpé en segments, tel qu'écrit dans les fichiers de contenu :
+ *   ["Texte normal ", { "text": "mot", "style": "script bleu" }, " suite"]
+ * Styles possibles (combinables) : script, bleu, jaune.
+ */
+export type Segment = string | { text: string; style?: string };
+
+interface Props {
+  segments: Segment[];
+}
+
+const { segments } = Astro.props;
+const parts = segments.map((s) =>
+  typeof s === "string"
+    ? { text: s, className: "" }
+    : { text: s.text, className: (s.style ?? "").split(" ").filter(Boolean).map((c) => `txt-${c}`).join(" ") },
+);
+---
+
+{parts.map((p) => (p.className ? <span class={p.className}>{p.text}</span> : p.text))}

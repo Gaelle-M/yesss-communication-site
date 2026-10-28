@@ -1,0 +1,193 @@
+---
+import { Image } from "astro:assets";
+import site from "../content/site.json";
+import RichText from "./ui/RichText.astro";
+import SocialIcon from "./ui/SocialIcon.astro";
+import { getImage } from "../lib/images";
+
+const { footer, accessibilite: a11y } = site;
+const { coordonnees: c, reseau, hebergement } = footer;
+---
+
+<footer class="footer" id="pied-de-page">
+  <div class="footer__inner container">
+    <nav class="footer__col footer__liens" aria-label={a11y.menuPiedDePage}>
+      <ul role="list">
+        {
+          footer.liens.map((lien) => (
+            <li>
+              <a href={lien.href}>{lien.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="footer__col footer__centre">
+      <address>
+        <strong>{c.nom}</strong>
+        {c.adresse.map((ligne) => <span>{ligne}</span>)}
+        <a class="footer__tel" href={c.telephone.href}>{c.telephone.label}</a>
+        <a href={`mailto:${c.email}`}>{c.email}</a>
+      </address>
+
+      <div class="footer__social">
+        <p class="footer__suivez"><RichText segments={footer.suivezNous} /></p>
+        <ul role="list" aria-label={a11y.reseauxSociaux}>
+          {
+            footer.reseaux.map((r) => (
+              <li>
+                <a href={r.href} target="_blank" rel="noopener">
+                  <SocialIcon name={r.icone as "linkedin" | "instagram" | "tiktok"} />
+                  <span class="visually-hidden">
+                    {r.nom} {a11y.nouvelOnglet}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__col footer__droite">
+      <p>
+        <strong>{reseau.titre}</strong><br />
+        {reseau.texte}
+      </p>
+      <a href={reseau.logo.href} target="_blank" rel="noopener">
+        <Image src={getImage(reseau.logo.image)} alt={`${reseau.logo.alt} ${a11y.nouvelOnglet}`} height={18} />
+      </a>
+      <p>{hebergement.texte}</p>
+      <a class="footer__hebergeur" href={hebergement.lien.href} target="_blank" rel="noopener">
+        {hebergement.lien.label}<span class="visually-hidden"> {a11y.nouvelOnglet}</span>
+      </a>
+      <ul class="footer__certifs" role="list">
+        {
+          footer.certifications.map((cert) => (
+            <li>
+              <a href={cert.href}>
+                <Image src={getImage(cert.image)} alt={cert.alt} height={36} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <p class="footer__copyright">{footer.copyright}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-xl) var(--space-lg);
+    background: var(--color-bleu-nuit);
+    color: var(--color-texte-inverse);
+    font-size: var(--text-sm);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+    text-align: center;
+  }
+
+  .footer ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer a {
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: var(--color-jaune);
+  }
+
+  .footer__liens ul {
+    display: grid;
+    gap: var(--space-2xs);
+    font-weight: var(--font-weight-bold);
+  }
+
+  address {
+    display: grid;
+    gap: 0.35rem;
+    font-style: normal;
+  }
+
+  .footer__tel {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .footer__social {
+    margin-top: var(--space-lg);
+  }
+
+  .footer__suivez {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .footer__suivez :global(.txt-script) {
+    font-size: 1.6em;
+  }
+
+  .footer__social ul {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+  }
+
+  .footer__droite {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2xs);
+    align-content: start;
+  }
+
+  .footer__hebergeur {
+    max-width: 15rem;
+    color: var(--color-bleu-clair);
+    font-weight: var(--font-weight-bold);
+    text-decoration: underline !important;
+  }
+
+  .footer__certifs {
+    display: flex;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
+  }
+
+  .footer__certifs img {
+    height: 2.25rem;
+    width: auto;
+  }
+
+  .footer__copyright {
+    grid-column: 1 / -1;
+    margin-top: var(--space-md);
+    font-size: var(--text-xs);
+    opacity: 0.75;
+  }
+
+  @media (min-width: 48rem) {
+    .footer__inner {
+      grid-template-columns: 1fr 1.2fr 1fr;
+    }
+
+    .footer__liens {
+      text-align: left;
+    }
+
+    .footer__droite {
+      justify-items: end;
+      text-align: right;
+    }
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Wave from "../ui/Wave.astro";
+import { getImage } from "../../lib/images";
+
+interface Props {
+  titre: string;
+  lien: string;
+  items: { image: string; alt: string; href: string }[];
+  bouton: { label: string; href: string };
+}
+
+const { titre, lien, items, bouton } = Astro.props;
+---
+
+<section class="projets" aria-labelledby="projets-titre">
+  <Wave color="var(--color-beige)" />
+  <div class="projets__inner container">
+    <h2 class="projets__titre" id="projets-titre"><a href={lien}>{titre}</a></h2>
+    <ul class="projets__liste" role="list">
+      {
+        items.map((item) => (
+          <li>
+            <a class="projets__lien" href={item.href}>
+              <Image src={getImage(item.image)} alt={item.alt} width={500} height={476} fit="cover" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <Button {...bouton} variant="jaune" />
+  </div>
+</section>
+
+<style>
+  .projets {
+    position: relative;
+    padding-block: calc(var(--wave-height) + var(--space-lg)) calc(var(--space-2xl) + 4rem);
+    background: var(--color-bleu-nuit);
+    color: var(--color-texte-inverse);
+  }
+
+  .projets__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-lg);
+  }
+
+  .projets__titre {
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+  }
+
+  .projets__titre a {
+    text-decoration: none;
+  }
+
+  .projets__titre a::before {
+    content: "> " / "";
+  }
+
+  .projets__titre a::after {
+    content: " <" / "";
+  }
+
+  .projets__liste {
+    display: grid;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: var(--container-max);
+    padding: 0;
+    list-style: none;
+  }
+
+  .projets__lien {
+    display: block;
+    overflow: hidden;
+  }
+
+  .projets__lien img {
+    width: 100%;
+    aspect-ratio: 500 / 476;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .projets__lien:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (min-width: 48rem) {
+    .projets__liste {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

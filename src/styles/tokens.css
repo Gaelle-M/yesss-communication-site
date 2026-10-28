@@ -1,0 +1,59 @@
+/*
+  Charte Yesss Communication : SEUL endroit où définir couleurs, polices et tailles.
+  Les composants n'utilisent que ces variables.
+*/
+:root {
+  /* Couleurs de la charte */
+  --color-bleu-nuit: #032834;  /* bleu très foncé (presque noir) */
+  --color-bleu-fonce: #00495b;
+  --color-bleu-clair: #00b8bc;
+  --color-jaune: #fbbb08;
+  --color-beige: #fffaee;
+  --color-blanc: #ffffff;
+
+  /* Rôles (à modifier ici pour changer l'usage d'une couleur partout) */
+  --color-texte: var(--color-bleu-nuit);
+  --color-texte-inverse: var(--color-blanc);
+  --color-fond: var(--color-blanc);
+  --color-accent: var(--color-bleu-clair);        /* mots mis en avant dans les titres */
+  --color-accent-chaud: var(--color-jaune);
+  --color-focus: var(--color-jaune);
+
+  /* Polices */
+  --font-base: "Lexend", system-ui, sans-serif;
+  --font-script: "adventures-unlimited", cursive;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Tailles de texte (fluides entre mobile et desktop) */
+  --text-xs: 0.8125rem;                                 /* 13px */
+  --text-sm: 0.9375rem;                                 /* 15px */
+  --text-base: 1rem;                                    /* 16px */
+  --text-md: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);   /* 17 → 20px */
+  --text-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);    /* 20 → 24px */
+  --text-xl: clamp(2.2rem, 1.6rem + 2.4vw, 3.125rem);   /* 35 → 50px */
+  --text-2xl: clamp(2.5rem, 1.8rem + 3vw, 3.5rem);      /* 40 → 56px */
+  --text-script: clamp(4.5rem, 3rem + 5vw, 7.5rem);     /* 72 → 120px */
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+
+  /* Espacements */
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: clamp(4rem, 3rem + 4vw, 6.25rem);
+
+  /* Mise en page */
+  --container-max: 75rem;     /* 1200px */
+  --container-narrow: 62rem;
+  --gutter: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --radius-pill: 999px;
+  --wave-height: clamp(3rem, 8vw, 7.5rem);
+  --header-height: 5rem;
+
+  --transition: 0.3s ease;
+}

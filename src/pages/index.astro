@@ -1,16 +1,19 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import Intro from "../components/sections/Intro.astro";
+import Metier from "../components/sections/Metier.astro";
+import Projets from "../components/sections/Projets.astro";
+import RaisonDetre from "../components/sections/RaisonDetre.astro";
+import Contact from "../components/sections/Contact.astro";
+import accueil from "../content/accueil.json";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={accueil.meta.titre} description={accueil.meta.description}>
+  <Hero {...accueil.hero} />
+  <Intro {...accueil.intro} />
+  <Metier {...accueil.metier} />
+  <Projets {...accueil.projets} />
+  <RaisonDetre {...accueil.raisonDetre} />
+  <Contact {...accueil.contact} />
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: "jaune" | "bleu";
+}
+
+const { href, label, variant = "jaune" } = Astro.props;
+---
+
+<a class:list={["btn", `btn--${variant}`]} href={href}>{label}</a>
+
+<style>
+  .btn {
+    display: inline-block;
+    min-width: min(100%, 20rem);
+    padding: 0.85em 2.5em;
+    border: 2px solid var(--btn-fond);
+    border-radius: var(--radius-pill);
+    background: var(--btn-fond);
+    color: var(--btn-texte);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color var(--transition), color var(--transition);
+  }
+
+  .btn:hover {
+    background: var(--btn-texte);
+    color: var(--btn-fond);
+  }
+
+  /* Texte foncé sur jaune : le blanc du site actuel n'est pas assez contrasté (1,7:1) */
+  .btn--jaune {
+    --btn-fond: var(--color-jaune);
+    --btn-texte: var(--color-bleu-nuit);
+  }
+
+  .btn--bleu {
+    --btn-fond: var(--color-bleu-fonce);
+    --btn-texte: var(--color-blanc);
+  }
+</style>

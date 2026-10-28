@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Wave from "../ui/Wave.astro";
+import croix from "../../assets/images/accueil/deco-croix.svg";
+import tireBouchon from "../../assets/images/accueil/deco-tire-bouchon.svg";
+
+interface Props {
+  titre: string;
+  sousTitre: string;
+  bouton: { label: string; href: string };
+}
+
+const { titre, sousTitre, bouton } = Astro.props;
+---
+
+<section class="contact" aria-labelledby="contact-titre">
+  <Wave color="var(--color-fond)" flip />
+  <Image class="contact__deco contact__deco--croix" src={croix} alt="" />
+  <Image class="contact__deco contact__deco--tire-bouchon" src={tireBouchon} alt="" />
+  <div class="contact__inner container">
+    <h2 class="contact__titre" id="contact-titre">{titre}</h2>
+    <p class="contact__sous-titre">{sousTitre}</p>
+    <Button {...bouton} variant="jaune" />
+  </div>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+    padding-block: calc(var(--wave-height) + var(--space-md)) var(--space-xl);
+    overflow: hidden;
+    background: var(--color-bleu-clair);
+    text-align: center;
+  }
+
+  .contact__inner {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+  }
+
+  .contact__titre {
+    font-size: var(--text-2xl);
+  }
+
+  /* Bleu nuit plutôt que blanc : le blanc sur bleu clair n'est pas assez contrasté (2,3:1) */
+  .contact__sous-titre {
+    margin-bottom: var(--space-md);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+  }
+
+  .contact__deco {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .contact__deco--croix {
+    bottom: 22%;
+    left: 20%;
+    width: clamp(2rem, 3vw, 3rem);
+  }
+
+  .contact__deco--tire-bouchon {
+    top: calc(var(--wave-height) * 0.2);
+    right: 8%;
+    width: clamp(5rem, 12vw, 11rem);
+  }
+
+  @media (max-width: 47.99rem) {
+    .contact__deco--croix {
+      display: none;
+    }
+
+    .contact__deco--tire-bouchon {
+      top: 1rem;
+      right: -1rem;
+    }
+  }
+</style>

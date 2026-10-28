@@ -1,0 +1,42 @@
+---
+interface Props {
+  name: "linkedin" | "instagram" | "tiktok";
+}
+
+const { name } = Astro.props;
+---
+
+<svg class="social-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+  {
+    name === "linkedin" && (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="3" />
+        <path d="M8 10.5v6 M8 7.5v.01 M12 16.5v-6 M12 13.5a2.5 2.5 0 0 1 5 0v3" />
+      </>
+    )
+  }
+  {
+    name === "instagram" && (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <path d="M17.5 6.5v.01" />
+      </>
+    )
+  }
+  {
+    name === "tiktok" && (
+      <path d="M13 3v12.5a4 4 0 1 1-4-4 M13 3c.4 2.9 2.6 4.8 5.5 5" />
+    )
+  }
+</svg>
+
+<style>
+  .social-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>

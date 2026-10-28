@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "titre": "Yesss Communication | Agence de communication Marseille",
+    "description": "Agence conseil en communication labellisée RSE et entreprise à mission à Marseille. Stratégie digitale, création de sites, contenus & social media responsables."
+  },
+  "hero": {
+    "image": "accueil/hero-fond.webp",
+    "debut": "L’agence",
+    "mots": ["enthousiaste", "créative", "impliquée"],
+    "fin": "qui avance avec vous"
+  },
+  "intro": {
+    "accroche": [
+      "On ne travaille pas ",
+      { "text": "pour", "style": "script bleu" },
+      " vous. On travaille ",
+      { "text": "avec", "style": "script jaune" },
+      " vous…"
+    ],
+    "titre": [
+      "Agence conseil en communication digitale à Marseille, ",
+      { "text": "à impact positif.", "style": "bleu" }
+    ],
+    "paragraphes": [
+      "Chez Yesss, l'enthousiasme n'est pas un bonus. C'est notre carburant, notre déclencheur, notre liant. Parce qu'à l'heure où tout le monde parle de \"communauté digitale engagée\", quoi de plus fédérateur que l'enthousiasme pour partager des valeurs, des convictions ou une vision nouvelle de son marché ?",
+      "Nous croyons à la puissance d'une communication vivante, positive et authentique. Celle qui fait rayonner une marque, une entreprise, une organisation sans trahir ce qu'elle est."
+    ]
+  },
+  "metier": {
+    "titre": [
+      "Notre métier : créer, accompagner… ",
+      { "text": "faire grandir !", "style": "bleu" }
+    ],
+    "paragraphes": [
+      "Yesss est une agence conseil en communication digitale. Mais on est bien plus qu'une agence. Nous sommes des partenaires de confiance, des coéquipiers impliqués.",
+      "Dans un monde qui bouge et évolue, nous vous aidons en tant qu'acteur engagé à :"
+    ],
+    "items": [
+      { "image": "accueil/metier-positionnement.webp", "alt": "(Re)penser votre positionnement" },
+      { "image": "accueil/metier-engagements.webp", "alt": "Raconter vos engagements" },
+      { "image": "accueil/metier-entoure.webp", "alt": "Être bien entourés" },
+      { "image": "accueil/metier-vision.webp", "alt": "Déployer votre vision" }
+    ],
+    "navigationCarrousel": "Afficher l'élément {n} sur {total}"
+  },
+  "projets": {
+    "titre": "#YesssFamily",
+    "lien": "/projets/",
+    "items": [
+      { "image": "projets/popelino.webp", "alt": "Projet Popelino", "href": "/projets/popelino/" },
+      { "image": "projets/moulins-soufflet.webp", "alt": "Projet Moulins Soufflet", "href": "/projets/moulins-soufflet/" },
+      { "image": "projets/crcm.webp", "alt": "Projet CRCM", "href": "/projets/crcm/" }
+    ],
+    "bouton": { "label": "Voir tout", "href": "/projets/" }
+  },
+  "raisonDetre": {
+    "surtitre": "Ce qui nous guide…",
+    "titre": [
+      "Créer des liens ",
+      { "text": "durables,", "style": "script bleu" },
+      " pas juste des campagnes."
+    ],
+    "image": { "src": "accueil/photo-equipe.webp", "alt": "Équipe Yesss Communication" },
+    "colonneGauche": [
+      "Notre raison d'être est claire :",
+      { "citation": "«Mettre la communication au service de l'échange et du partage d'expérience pour créer des liens durables entre les individus.»" },
+      "Nous pensons que la communication peut (et doit) être responsable, sincère, utile. C'est pourquoi Yesss est une entreprise à mission labellisée RSE."
+    ],
+    "colonneDroite": [
+      "Notre engagement est un véritable cadre de travail et un moteur d'action.",
+      "Nous avançons avec celles et ceux qui veulent communiquer autrement, en mettant l'humain, le sens et la relation au cœur de leur développement."
+    ],
+    "bouton": { "label": "En savoir plus", "href": "/nos-engagements/" }
+  },
+  "contact": {
+    "titre": "On en parle",
+    "sousTitre": "Envie de faire équipe ? Parlons de votre projet !",
+    "bouton": { "label": "Contactez-nous", "href": "/contactez-nous/" }
+  }
+}
