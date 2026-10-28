@@ -3,6 +3,8 @@ nom: "Galerie Don Carli"
 type: "Site"
 tags: ["référencementnaturel", "siteinternet"]
 lien: "https://galerie-doncarli.fr/"
+ordre: 1
+vignette: "../../assets/images/projets/galerie-don-carli/vignette.webp"
 galerie:
   - src: "../../assets/images/projets/galerie-don-carli/slide-1.webp"
     alt: "Galerie Don Carli - Yesss Communication"

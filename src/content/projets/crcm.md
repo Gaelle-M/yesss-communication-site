@@ -3,6 +3,7 @@ nom: "Crcm Marseille"
 type: "Site, LinkedIn & Newsletter"
 tags: ["bilingue", "chartegraphique", "communicationinterne", "identitédemarque", "linkedin", "logo", "newsletters", "référencementnaturel", "réseauxsociaux", "siteinternet"]
 lien: "https://crcm-marseille.fr/"
+ordre: 26
 galerie:
   - src: "../../assets/images/projets/crcm/slide-1.webp"
     alt: "Slide 1 projet CRCM - Yesss Communication"

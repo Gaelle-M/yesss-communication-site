@@ -122,6 +122,10 @@ const estActif = (href: string) => current === href || (href !== "/" && current.
     transition: background-color var(--transition), box-shadow var(--transition);
   }
 
+  .header--plein {
+    background: var(--header-fond-plein);
+  }
+
   .header.is-scrolled {
     background: var(--header-fond-scroll);
     box-shadow: 0 0.25rem 1rem rgb(3 40 52 / 0.25);

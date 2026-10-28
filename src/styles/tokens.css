@@ -58,6 +58,7 @@
      Une page projet les remplace par les couleurs de son thème (voir src/lib/theme.ts). */
   --header-fond: transparent;
   --header-fond-scroll: var(--color-bleu-fonce);   /* fond du menu fixe une fois la page défilée */
+  --header-fond-plein: var(--color-bleu-nuit);     /* fond du menu des pages sans grand visuel */
   --header-texte: var(--color-blanc);
   --header-bordure: transparent;
   --nav-survol: var(--color-jaune);                /* lien survolé ou page en cours dans le menu */

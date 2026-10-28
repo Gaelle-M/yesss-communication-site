@@ -1,0 +1,299 @@
+---
+/**
+ * Grille des projets avec tri par mot-clé (?tag=…) et bouton « Plus de projets ».
+ * Sans JavaScript : tous les projets sont affichés, le tri est masqué.
+ */
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { estClair, slugTag } from "../../lib/theme";
+
+interface Props {
+  projets: CollectionEntry<"projets">[];
+  textes: {
+    projetsLabel: string;
+    plusDeProjets: string;
+    parPage: number;
+    tri: {
+      label: string;
+      tous: string;
+      voirPlus: string;
+      voirMoins: string;
+      principaux: string[];
+      resultat: string;
+      aucun: string;
+    };
+  };
+}
+
+const { projets, textes } = Astro.props;
+const { tri } = textes;
+
+// Mots-clés de tous les projets, regroupés par adresse (« montagevidéo » = « montagevideo »)
+const tags = new Map<string, string>();
+for (const p of projets) for (const t of p.data.tags) if (!tags.has(slugTag(t))) tags.set(slugTag(t), t);
+const principaux = tri.principaux.map(slugTag).filter((s) => tags.has(s));
+const autres = [...tags.keys()].filter((s) => !principaux.includes(s)).sort();
+---
+
+<div class="liste" data-par-page={textes.parPage} data-resultat={tri.resultat}>
+  <div class="tri" role="group" aria-label={tri.label} hidden>
+    <button type="button" class="tri__btn" data-tag="" aria-pressed="true">{tri.tous}</button>
+    {principaux.map((s) => <button type="button" class="tri__btn" data-tag={s} aria-pressed="false">#{tags.get(s)}</button>)}
+    <button
+      type="button"
+      class="tri__btn tri__plus"
+      aria-expanded="false"
+      aria-controls="tri-autres"
+      data-plus={tri.voirPlus}
+      data-moins={tri.voirMoins}
+    >
+      {tri.voirPlus}
+    </button>
+    <div class="tri__autres" id="tri-autres" hidden>
+      {autres.map((s) => <button type="button" class="tri__btn" data-tag={s} aria-pressed="false">#{tags.get(s)}</button>)}
+    </div>
+  </div>
+
+  <p class="liste__statut visually-hidden" aria-live="polite"></p>
+
+  <h2 class="visually-hidden">{textes.projetsLabel}</h2>
+  <ul class="grille" role="list">
+    {
+      projets.map((p) => {
+        const { nom, tags: tagsProjet, vignette, galerie, theme } = p.data;
+        const voile = estClair(theme.fond) ? theme.texte : theme.fond;
+        return (
+          <li class="carte" data-tags={tagsProjet.map(slugTag).join(" ")} style={`--voile: ${voile}`}>
+            <a class="carte__lien" href={`/projets/${p.id}/`}>
+              <Image
+                src={vignette ?? galerie[0].src}
+                alt=""
+                widths={[400, 600]}
+                sizes="(min-width: 48rem) 33vw, 100vw"
+                width={600}
+                height={600}
+                fit="cover"
+              />
+              <span class="carte__voile">
+                <h3 class="carte__nom">{nom}</h3>
+                <span class="carte__tags">{tagsProjet.map((t) => `#${t}`).join(" ")}</span>
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p class="liste__aucun" hidden>{tri.aucun}</p>
+
+  <div class="liste__plus" hidden>
+    <button type="button" class="liste__plus-btn">{textes.plusDeProjets}</button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".liste").forEach((liste) => {
+    const parPage = Number(liste.dataset.parPage);
+    const cartes = Array.from(liste.querySelectorAll<HTMLElement>(".carte"));
+    const boutons = Array.from(liste.querySelectorAll<HTMLButtonElement>(".tri__btn[data-tag]"));
+    const tri = liste.querySelector<HTMLElement>(".tri")!;
+    const plusTags = liste.querySelector<HTMLButtonElement>(".tri__plus")!;
+    const autres = liste.querySelector<HTMLElement>(".tri__autres")!;
+    const statut = liste.querySelector<HTMLElement>(".liste__statut")!;
+    const aucun = liste.querySelector<HTMLElement>(".liste__aucun")!;
+    const plus = liste.querySelector<HTMLElement>(".liste__plus")!;
+
+    let tag = new URLSearchParams(location.search).get("tag") ?? "";
+    if (!boutons.some((b) => b.dataset.tag === tag)) tag = "";
+    let visibles = parPage;
+
+    function afficher(annoncer = false) {
+      const correspondants = cartes.filter((c) => !tag || c.dataset.tags!.split(" ").includes(tag));
+      cartes.forEach((c) => (c.hidden = !correspondants.slice(0, visibles).includes(c)));
+      boutons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tag === tag)));
+      aucun.hidden = correspondants.length > 0;
+      plus.hidden = correspondants.length <= visibles;
+      if (annoncer) statut.textContent = liste.dataset.resultat!.replace("{n}", String(Math.min(visibles, correspondants.length)));
+    }
+
+    function ouvrirAutres(ouvert: boolean) {
+      autres.hidden = !ouvert;
+      plusTags.setAttribute("aria-expanded", String(ouvert));
+      plusTags.textContent = (ouvert ? plusTags.dataset.moins : plusTags.dataset.plus) ?? "";
+    }
+
+    boutons.forEach((b) =>
+      b.addEventListener("click", () => {
+        tag = b.dataset.tag ?? "";
+        visibles = parPage;
+        const url = new URL(location.href);
+        tag ? url.searchParams.set("tag", tag) : url.searchParams.delete("tag");
+        history.replaceState(null, "", url);
+        afficher(true);
+      }),
+    );
+    plusTags.addEventListener("click", () => ouvrirAutres(autres.hidden));
+    plus.querySelector("button")!.addEventListener("click", () => {
+      const premierNouveau = visibles;
+      visibles += parPage;
+      afficher(true);
+      // Le focus passe au premier projet ajouté
+      cartes.filter((c) => !c.hidden)[premierNouveau]?.querySelector("a")?.focus();
+    });
+
+    // Mot-clé reçu dans l'adresse et rangé dans « voir plus » : on ouvre la liste
+    if (tag && autres.querySelector(`[data-tag="${tag}"]`)) ouvrirAutres(true);
+    tri.hidden = false;
+    afficher();
+  });
+</script>
+
+<style>
+  .tri {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2xs);
+    width: min(100% - 2 * var(--gutter), var(--container-max));
+    margin: 0 auto var(--space-md);
+  }
+
+  .tri__autres {
+    display: contents;
+  }
+
+  .tri__autres[hidden] {
+    display: none;
+  }
+
+  .tri__btn {
+    padding: 0.35em 1em;
+    border: 1px solid var(--color-bleu-nuit);
+    border-radius: var(--radius-pill);
+    background: var(--color-blanc);
+    color: var(--color-bleu-nuit);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: background-color var(--transition), color var(--transition);
+  }
+
+  .tri__btn:hover,
+  .tri__btn[aria-pressed="true"] {
+    background: var(--color-bleu-nuit);
+    color: var(--color-blanc);
+  }
+
+  .tri__plus::before {
+    content: "▸ " / "";
+  }
+
+  .tri__plus[aria-expanded="true"]::before {
+    content: "▾ " / "";
+  }
+
+  .grille {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .carte__lien {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: var(--color-blanc);
+    text-decoration: none;
+  }
+
+  .carte__lien img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .carte__voile {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    background: color-mix(in srgb, var(--voile) 85%, transparent);
+    text-align: center;
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .carte__nom {
+    font-size: var(--text-lg);
+  }
+
+  .carte__tags {
+    font-size: var(--text-sm);
+  }
+
+  .carte__lien:hover .carte__voile,
+  .carte__lien:focus-visible .carte__voile {
+    opacity: 1;
+  }
+
+  .carte__lien:hover img {
+    transform: scale(1.04);
+  }
+
+  .carte__lien:focus-visible {
+    outline-offset: -6px;
+  }
+
+  /* Écrans tactiles (pas de survol) : le nom reste visible en bas de l'image */
+  @media (hover: none) {
+    .carte__voile {
+      inset: auto 0 0;
+      padding: var(--space-sm);
+      opacity: 1;
+    }
+
+    .carte__tags {
+      display: none;
+    }
+  }
+
+  .liste__aucun {
+    padding: var(--space-xl) var(--gutter);
+    text-align: center;
+  }
+
+  .liste__plus {
+    padding: var(--space-md) var(--gutter);
+    text-align: center;
+  }
+
+  .liste__plus[hidden] {
+    display: none;
+  }
+
+  .liste__plus-btn {
+    padding: 0.5em 1.75em;
+    border: 1px solid var(--color-bleu-nuit);
+    border-radius: var(--radius-pill);
+    background: var(--color-blanc);
+    color: var(--color-bleu-nuit);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+  }
+
+  .liste__plus-btn:hover {
+    background: var(--color-bleu-nuit);
+    color: var(--color-blanc);
+  }
+
+  @media (min-width: 48rem) {
+    .grille {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

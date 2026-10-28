@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "titre": "Projets | Yesss Communication",
+    "description": "Retrouvez tous les projets de Yesss Communication, agence sur Marseille. Réseaux sociaux, sites internet, shooting, print..."
+  },
+  "titre": "Ils disent Yesss",
+  "clients": {
+    "galerie": {
+      "label": "Ils nous font confiance",
+      "precedent": "Logo précédent",
+      "suivant": "Logo suivant",
+      "position": "Logo {n} sur {total}"
+    },
+    "logos": [
+      {
+        "image": "clients/logo-aabl-avocat-yesss.webp",
+        "alt": "Logo AABL avocat"
+      },
+      {
+        "image": "clients/logo-alfagel-yesss-communication.webp",
+        "alt": "Logo Alfagel"
+      },
+      {
+        "image": "clients/logo-birgy-couverture-yesss-communication.webp",
+        "alt": "Logo Birgy Couverture"
+      },
+      {
+        "image": "clients/logo-castelli-yesss-communication.webp",
+        "alt": "Logo Castelli"
+      },
+      {
+        "image": "clients/logo-cdm-yesss-communication.webp",
+        "alt": "Logo Cloisons du Midi"
+      },
+      {
+        "image": "clients/logo-crcm-yesss-communications.webp",
+        "alt": "Logo CRCM"
+      },
+      {
+        "image": "clients/logo-diamantor-yesss-communication.webp",
+        "alt": "Logo Diamantor"
+      },
+      {
+        "image": "clients/logo-dttis-yesss-communication.webp",
+        "alt": "Logo DTTIS"
+      },
+      {
+        "image": "clients/logo-ellipse-interim-yesss-communication.webp",
+        "alt": "Logo Ellipse Intérim"
+      },
+      {
+        "image": "clients/logo-et-moi-yesss-communication.webp",
+        "alt": "Logo &moi"
+      },
+      {
+        "image": "clients/logo-fitoform-yesss-communication.webp",
+        "alt": "Logo Fitoform"
+      },
+      {
+        "image": "clients/logo-galerie-don-carli-yesss.webp",
+        "alt": "Logo Galerie Don Carli"
+      },
+      {
+        "image": "clients/logo-gestion-franquebalme-yesss-communication.webp",
+        "alt": "Logo Gestion Franquebalme"
+      },
+      {
+        "image": "clients/logo-gms-formation-yesss-communication.webp",
+        "alt": "Logo GMS Formation"
+      },
+      {
+        "image": "clients/logo-histroire-d-eau-partenaire-yesss-communication.webp",
+        "alt": "Logo Histoire d'eau"
+      },
+      {
+        "image": "clients/logo-imm-yesss-communiction.webp",
+        "alt": "Logo IMM"
+      },
+      {
+        "image": "clients/logo-ile-des-embiez-partenaire-yesss.webp",
+        "alt": "Logo Ile des Embiez"
+      },
+      {
+        "image": "clients/logo-maison-de-la-glace-yesss-communication.webp",
+        "alt": "Logo Maison de la Glace"
+      },
+      {
+        "image": "clients/logo-moulins-soufflet-yesss-communication.webp",
+        "alt": "Logo Moulins Soufflet"
+      },
+      {
+        "image": "clients/logo-partenaire-picsl-yesss-communication-agece-sur-marseille.webp",
+        "alt": "Logo PICsL"
+      },
+      {
+        "image": "clients/logo-popelino-yesss-communication.webp",
+        "alt": "Logo Popelino"
+      },
+      {
+        "image": "clients/logo-pop-fruit-yesss-communication.webp",
+        "alt": "Logo Pop Fruit"
+      },
+      {
+        "image": "clients/logo-prestiges-de-france-yesss-communication.webp",
+        "alt": "Logo Prestige de France"
+      },
+      {
+        "image": "clients/logo-recycle-plastique-yesss-communication.webp",
+        "alt": "Logo Recycle plastique"
+      },
+      {
+        "image": "clients/logo-salaison-du-champsaur-yesss-communication.webp",
+        "alt": "Logo Salaison du Champsaur"
+      },
+      {
+        "image": "clients/logo-sape-etancheite-yesss-cmmunication.webp",
+        "alt": "Logo Sape étanchéité"
+      },
+      {
+        "image": "clients/logo-the-yachter-yesss-communication.webp",
+        "alt": "Logo The Yachter"
+      },
+      {
+        "image": "clients/logo-partenaire-yesss-communication.webp",
+        "alt": "Logo Qommute"
+      },
+      {
+        "image": "clients/logo-peretti-groupe-partenaire-yesss-communication.webp",
+        "alt": "Logo Peretti Groupe"
+      },
+      {
+        "image": "clients/partenaire-logo-elec-engineering-yesss-communication.webp",
+        "alt": "Logo Elec engineering"
+      }
+    ]
+  },
+  "tri": {
+    "label": "Trier les projets par mot-clé",
+    "tous": "Tous",
+    "voirPlus": "voir plus",
+    "voirMoins": "voir moins",
+    "principaux": [
+      "identitédemarque",
+      "print",
+      "référencementnaturel",
+      "réseauxsociaux",
+      "shootingphoto",
+      "siteinternet"
+    ],
+    "resultat": "{n} projets affichés",
+    "aucun": "Aucun projet pour ce mot-clé."
+  },
+  "projetsLabel": "Nos projets",
+  "plusDeProjets": "Plus de projets",
+  "parPage": 6
+}

@@ -9,13 +9,31 @@ import type { ImageMetadata } from "astro";
 interface Props {
   images: { src: ImageMetadata; alt: string }[];
   labels: { label: string; precedent: string; suivant: string; position: string };
+  /** Proportions des images, ex. "960 / 913" */
+  ratio?: string;
+  /** "cover" : image recadrée pour remplir ; "contain" : image entière (logos) */
+  ajustement?: "cover" | "contain";
+  sizes?: string;
+  widths?: number[];
 }
 
-const { images, labels } = Astro.props;
+const {
+  images,
+  labels,
+  ratio = "960 / 913",
+  ajustement = "cover",
+  sizes = "(min-width: 60rem) 50vw, 100vw",
+  widths = [480, 720, 960],
+} = Astro.props;
 const position = (n: number) => labels.position.replace("{n}", String(n)).replace("{total}", String(images.length));
 ---
 
-<section class="galerie" aria-roledescription="carrousel" aria-label={labels.label}>
+<section
+  class="galerie"
+  aria-roledescription="carrousel"
+  aria-label={labels.label}
+  style={`--galerie-ratio: ${ratio}; --galerie-ajustement: ${ajustement}`}
+>
   <ul class="galerie__piste" role="list">
     {
       images.map((img, i) => (
@@ -23,8 +41,8 @@ const position = (n: number) => labels.position.replace("{n}", String(n)).replac
           <Image
             src={img.src}
             alt={img.alt}
-            widths={[480, 720, 960]}
-            sizes="(min-width: 60rem) 50vw, 100vw"
+            widths={widths.filter((w) => w <= img.src.width).concat(widths.some((w) => w <= img.src.width) ? [] : [img.src.width])}
+            sizes={sizes}
             loading={i === 0 ? "eager" : "lazy"}
           />
         </li>
@@ -93,8 +111,8 @@ const position = (n: number) => labels.position.replace("{n}", String(n)).replac
   .galerie__item img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 960 / 913;
-    object-fit: cover;
+    aspect-ratio: var(--galerie-ratio);
+    object-fit: var(--galerie-ajustement);
   }
 
   .galerie__fleche {

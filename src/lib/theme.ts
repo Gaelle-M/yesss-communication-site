@@ -15,7 +15,7 @@ export function estClair(hex: string): boolean {
 
 export function themeVars({ fond, texte, bouton }: Theme): string {
   const vars = {
-    "--header-fond": fond,
+    "--header-fond-plein": fond,
     "--header-fond-scroll": fond,
     "--header-texte": texte,
     "--header-bordure": texte,

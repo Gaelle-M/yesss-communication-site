@@ -12,6 +12,10 @@ const projets = defineCollection({
       nom: z.string(),
       type: z.string(),
       tags: z.array(z.string()).default([]),
+      /** Position dans la liste « Ils disent Yesss » */
+      ordre: z.number(),
+      /** Image de la liste (sinon : première image de la galerie) */
+      vignette: image().optional(),
       lien: z.string().url().optional(),
       /** Meta description (sinon : texte par défaut de src/content/pages/projet.json) */
       description: z.string().optional(),

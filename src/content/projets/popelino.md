@@ -3,6 +3,7 @@ nom: "Popelino"
 type: "Site & Réseaux sociaux"
 tags: ["bilingue", "campagnepaid", "instagram", "montagevidéo", "print", "référencementnaturel", "réseauxsociaux", "shootingphoto", "siteinternet", "UGC"]
 lien: "https://popelino.fr/"
+ordre: 28
 galerie:
   - src: "../../assets/images/projets/popelino/slide-1.jpg"
     alt: "Slide 1 projet Popelino - Yesss Communication"
