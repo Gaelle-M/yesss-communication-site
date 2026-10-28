@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "titre": "Nous | Yesss Communication",
+    "description": "Chez Yesss Communication, agence sur Marseille, créer un environnement de travail positif dans lequel chaque talent peut s'exprimer est une priorité..."
+  },
+  "titre": "Nous",
+  "sections": [
+    {
+      "type": "chapo",
+      "surtitre": "L'enthousiasme, un moteur au quotidien.",
+      "paragraphes": [
+        "Créer un environnement de travail positif dans lequel chaque talent peut s'exprimer est une priorité pour Yesss Communication que ce soit pour l’équipe intégrée à l’agence, ou les nombreux partenaires avec qui nous collaborons régulièrement."
+      ]
+    },
+    {
+      "type": "equipe",
+      "titre": "La {script bleu:team} Yesss",
+      "membres": [
+        {
+          "nom": "Clémentine MOULIN",
+          "role": "Fondatrice",
+          "linkedin": "https://www.linkedin.com/in/clementinemoulin/",
+          "photo": {
+            "src": "../../assets/images/agence/nous/equipe-clmentine.webp",
+            "alt": "Photo de la fondatrice de Yesss Communication, Clémentine Moulin"
+          }
+        },
+        {
+          "nom": "Gaëlle MAZZALI",
+          "role": "Intégratrice WordPress",
+          "linkedin": "https://www.linkedin.com/in/ga%C3%ABlle-mazzali-53b003214/",
+          "photo": {
+            "src": "../../assets/images/agence/nous/equipe-galle.webp",
+            "alt": "Photo de l'intégratrice web de Yesss Communication, Gaëlle Mazzali"
+          }
+        },
+        {
+          "nom": "Eloïse GUILLOUT",
+          "role": "Content Manager",
+          "linkedin": "https://www.linkedin.com/in/elo%C3%AFse-guillout-2b7918275/",
+          "photo": {
+            "src": "../../assets/images/agence/nous/equipe-elose.webp",
+            "alt": "Photo de la content manageur de Yesss Communication, Eloïse Guillout"
+          }
+        },
+        {
+          "nom": "Alexia DALMASSO-COGOLLOS",
+          "role": "Content Manager",
+          "linkedin": "https://www.linkedin.com/in/alexia-cogollos-932089130/",
+          "photo": {
+            "src": "../../assets/images/agence/nous/equipe-alexia.webp",
+            "alt": "Photo de la graphiste / web designer de Yesss Communication, Alexia DALMASSO-COGOLLOS"
+          }
+        }
+      ],
+      "postuler": {
+        "label": "> Postuler <",
+        "href": "/rejoignez-nous/",
+        "texte": "Pourquoi pas vous ?",
+        "image": {
+          "src": "../../assets/images/agence/nous/postuler.webp",
+          "alt": "Illustration d'image pour postuler et rejoindre l'équipe"
+        }
+      }
+    },
+    {
+      "type": "photos",
+      "titre": "{script bleu:Partenaires} and Co",
+      "images": [
+        {
+          "src": "../../assets/images/agence/nous/partenaire-01.webp",
+          "alt": "Journée autisme - Yesss Communication agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-02.webp",
+          "alt": "Partenaires - Shooting restaurant - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-03.webp",
+          "alt": "Clean my calanques - Yesss Communication agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-04.webp",
+          "alt": "Partenaires BNI halloween - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-05.webp",
+          "alt": "Codev &moi coach - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-06.webp",
+          "alt": "Partenaire shooting pour PopFruit - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-07.webp",
+          "alt": "Partenaires BNI girls vélodrome - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-08.webp",
+          "alt": "Partenaire Marie Jones - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-09.webp",
+          "alt": "Partenaires CRCM - Yesss Communication agence Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-10.webp",
+          "alt": "Vidéo Redbull - Yesss Communication, agence sur Marseile"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-11.webp",
+          "alt": "Clean my calanques- Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-12.webp",
+          "alt": "Team Yesss Communication 2024 - Agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-13.webp",
+          "alt": "Partenaires lasergame - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-14.webp",
+          "alt": "Partenaire Marie Jones - Yesss Communication agence Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-15.webp",
+          "alt": "Noël 2024 de l'équipe Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-16.webp",
+          "alt": "Partenaire shooting été 2025 - Yesss Communication, agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-17.webp",
+          "alt": "Repas de noël team Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-18.webp",
+          "alt": "Ramassage avec Recycle Plastique de l'équipe Yesss Communication, agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-19.webp",
+          "alt": "Eloïse rejoint la team Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-20.webp",
+          "alt": "Partenaire Recycle Plastique - Yesss Communication agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-21.webp",
+          "alt": "Partenaire shooting pour Maison de la Glace - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-22.webp",
+          "alt": "Partenaire Ressources et Déploiement - Yesss communication"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-23.webp",
+          "alt": "Octobre rose 2024 team Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-24.webp",
+          "alt": "La team Yesss Communication visite Paris - Agence de communication sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-25.webp",
+          "alt": "Partenaire Ressources et Déploiement - Yesss communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-26.webp",
+          "alt": "Partenaire Marie jones - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-27.webp",
+          "alt": "Custom trash - Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-28.webp",
+          "alt": "Partenaire Ressources et déploiement arbre"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-29.webp",
+          "alt": "Repas équipe Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-30.webp",
+          "alt": "Shooting enfant - Yesss Communication"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-31.webp",
+          "alt": "Restaurant repas équipe Yesss communication - Agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-32.webp",
+          "alt": "Partenaire shooting pour Maison de la Glace et Popelino - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-33.webp",
+          "alt": "Voyage paris 2022 de l'équipe Yesss Communication, agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-34.webp",
+          "alt": "Octobre rose 2025 team Yesss Communication agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-35.webp",
+          "alt": "Partenaire shooting pour PopFruit - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-36.webp",
+          "alt": "Partenaire shooting au Mucem - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-37.webp",
+          "alt": "Partenaire pause mouvement - Yesss Communication, agence sur Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-38.webp",
+          "alt": "Karaoké noël 2024 équipe Yesss Communication agence à Marseille"
+        },
+        {
+          "src": "../../assets/images/agence/nous/partenaire-39.webp",
+          "alt": "Partenaires - Yesss Communication CRCM Bioself Delphine"
+        }
+      ]
+    }
+  ]
+}

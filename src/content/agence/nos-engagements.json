@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "titre": "Nos engagements | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille on ne prétend pas tout révolutionner.Mais à notre niveau, on met en place plein de petites.."
+  },
+  "titre": "Nos engagements",
+  "sections": [
+    {
+      "type": "chapo",
+      "surtitre": "La RSE : ça se travaille et ça se partage",
+      "paragraphes": [
+        "Chez Yesss Communication, on ne prétend pas tout révolutionner. \\ Mais à notre niveau, on met en place plein de petites et grandes choses pour faire « notre part » avec sincérité, constance… et l’enthousiasme qui nous caractérise !",
+        "Des engagements qui guident notre façon de faire, nos relations et les projets que nous construisons avec nos clients, nos partenaires, notre équipe."
+      ]
+    },
+    {
+      "type": "engagements",
+      "items": [
+        {
+          "titre": "Accompagner",
+          "sousTitre": "les organisations vers une communication authentique qui valorise les talents et les savoir-faire avec justesse",
+          "image": {
+            "src": "../../assets/images/agence/nos-engagements/engagement-1.webp",
+            "alt": "Illustration mans - Nos engagements - Yesss Communication"
+          },
+          "liste": [],
+          "accordeon": [
+            {
+              "question": "Valoriser les savoir-faire / produits / services / compétences de nos clients sur des éléments factuels.",
+              "reponse": "Nous incitons les entreprises, institutions et organisations avec lesquelles nous travaillons à mettre en place une communication « vraie » qui ne trahit pas le client. Cela passe par un discours concret, fondé sur des éléments factuels : composition produit, taille de l’entreprise, modèle économique, etc. \\ Pas de greenwashing, social washing, greenhushing… ni aucune poudre aux yeux : des faits ! Des faits ! Des faits ! \\ La preuve par l’action et le partage d’expérience."
+            },
+            {
+              "question": "Valoriser dans leur communication les talents (collaborateurs, clients, partenaires, fournisseurs…) qui font l’organisation.",
+              "reponse": "Autour de chaque entreprise, chaque aventure entrepreneuriale, chaque innovation produit, gravitent des femmes et des hommes qui y contribuent pleinement. Les mettre en lumière, c’est aussi faire preuve de reconnaissance et cultiver un discours de transparence. \\ Ainsi, nous encourageons fortement nos clients à ouvrir les portes de leurs coulisses pour présenter les personnes derrière les logos !"
+            },
+            {
+              "question": "Privilégier des contenus uniques et authentiques, produits pour/par les clients. Le contenu unique, celui qui vous ressemble, est souvent le plus juste.",
+              "reponse": "Nous encourageons la création de contenus sincères et originaux : véritables photos d’équipe ou de production, rédaction sur mesure, voix du terrain… plutôt que des images stéréotypées issues de banques ou générées par IA."
+            }
+          ]
+        },
+        {
+          "titre": "Construire",
+          "sousTitre": "des relations d’affaires solides avec les clients, partenaires et collaborateurs.",
+          "image": {
+            "src": "../../assets/images/agence/nos-engagements/engagement-2.webp",
+            "alt": "Illustration construire ensemble nos engagements - Yesss Communication"
+          },
+          "liste": [],
+          "accordeon": [
+            {
+              "question": "Impliquer de manière transparente les parties prenantes sur les projets portés par Yesss Communication.",
+              "reponse": "Cette transparence s’applique à tous : \\ Avec nos clients : nous les conseillons et les accompagnons dans leur intérêt. Par exemple, dans la création de site web, pour éviter toute dépendance à l’agence, nous les sensibilisons à la nécessité d’acheter en direct leur nom de domaine et leur hébergement. Dans la continuité de cette démarche, nous faisons le choix de développer les sites de nos clients sur des CMS open source et des solutions autonomes. Une démarche que nous expliquons à chaque début de collaboration. \\ \\ Avec nos partenaires/fournisseurs : nous établissons des conditions de collaboration justes, respectueuses et équilibrées, propices au développement des deux parties, que ce soit au niveau de la rémunération ou des conditions d’exécution des missions. \\ \\ Avec nos collaborateurs : chez YESSS, la circulation de l’information est fluide et transparente, y compris sur les sujets financiers souvent considérés comme plus \"sensibles\". C’est notre façon de partager, de responsabiliser et de créer un esprit d’équipe durable."
+            },
+            {
+              "question": "Encourager la recommandation de nos parties prenantes.",
+              "reponse": "Pour soutenir le développement de nos clients, partenaires et fournisseurs, nous encourageons activement la recommandation, un moyen puissant de mettre en relation des organisations et des individus en phase sur leurs compétences, valeurs et engagements. \\ \\ YESSS fait également partie du réseau BNI, un réseau d’affaires basé sur une méthode de recommandation efficace et humaine."
+            },
+            {
+              "question": "À compétences et conditions égales, privilégier des collaborations avec des partenaires / prestataires locaux.",
+              "reponse": "De par notre ancrage géographique, nous faisons naturellement le choix de travailler avec des prestataires et partenaires locaux. Un réflexe que beaucoup de nos clients partagent et dont nous profitons également."
+            }
+          ]
+        },
+        {
+          "titre": "Être solidaire",
+          "sousTitre": "d’initiatives locales sur des thématiques \\ environnementales et sociétales",
+          "image": {
+            "src": "../../assets/images/agence/nos-engagements/engagement-3.webp",
+            "alt": "Illustration solidaire - Nos engagements - Yesss Communication"
+          },
+          "liste": [],
+          "accordeon": [
+            {
+              "question": "Soutenir financièrement des associations locales en reversant 1€ sur chaque facture émise par Yesss Communication",
+              "reponse": "Depuis 2024, nous reversons 1€ par facture à l’Institut Paoli-Calmettes (IPC), centre de lutte contre le cancer basé à Marseille, reconnu pour ses avancées en recherche et pour la qualité de l’accompagnement des patients. \\ \\ 1 personne sur 2 sera confrontée au cancer au cours de sa vie (source : INCa). Dans ce contexte, chaque don compte. C’est un engagement qui nous touche personnellement et que nous portons de fait collectivement avec nos clients."
+            },
+            {
+              "question": "Donner du temps à des associations locales avec un minimum de 25h par an.",
+              "reponse": "YESSS s’engage aussi en temps. Ensemble, nous décidons des causes que nous souhaitons soutenir. Nous participons régulièrement, sur notre temps de travail, à des actions concrètes telles que des ramassages de déchets (organisés par Clean My Calanques ou Recycle Plastique) ou encore l’accompagnement bénévole d'associations (comme nous avons pu le faire avec Recycle Plastique pour le rajeunissement de leur logo, la récupération de leur page Facebook…). \\ \\ Notre façon d'agir localement, avec les compétences qui sont les nôtres."
+            }
+          ]
+        },
+        {
+          "titre": "Encourager",
+          "sousTitre": "la démarche responsable des entreprises par une approche pédagogique, l’information et le partage de nos propres expériences en la matière.",
+          "image": {
+            "src": "../../assets/images/agence/nos-engagements/engagement-4.webp",
+            "alt": "Illustration encourager - Nos engagements - Yesss Commuication"
+          },
+          "liste": [
+            "Une newsletter semestrielle dans laquelle nous partageons nos avancées RSE avec nos clients, prestataires, prospects…",
+            "Des posts de sensibilisation sur nos réseaux sociaux, comme le fameux post du Mercredi Végé, qui valorise notre repas végétarien hebdomadaire en interne, une action simple pour réduire notre empreinte carbone.",
+            "Des échanges informels et des événements à venir pour partager notre propre démarche RSE avec les entreprises que nous accompagnons. Parce que progresser ensemble, c’est encore mieux !"
+          ],
+          "accordeon": []
+        }
+      ]
+    },
+    {
+      "type": "texte",
+      "paragraphes": [
+        "**Une démarche qui évolue avec l’agence.** \\ Ces engagements ne sont pas des cases à cocher. Ils sont vivants, perfectibles, évolutifs. \\ Et surtout, ils sont cohérents avec ce que nous sommes et avec les liens que nous voulons construire."
+      ]
+    },
+    {
+      "type": "appel",
+      "fond": "bleu-fonce",
+      "titre": "{bleu:Découvrez notre} \\ raison d'être",
+      "bouton": {
+        "label": "Découvrir",
+        "href": "/notre-raison-detre/"
+      }
+    }
+  ]
+}

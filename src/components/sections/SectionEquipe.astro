@@ -1,0 +1,132 @@
+---
+/** L'équipe : photo, nom, rôle, lien LinkedIn, puis la carte « Pourquoi pas vous ? » */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import TitreLigne from "../ui/TitreLigne.astro";
+import SocialIcon from "../ui/SocialIcon.astro";
+import site from "../../content/site.json";
+
+type Img = { src: ImageMetadata; alt: string };
+
+interface Props {
+  titre: string;
+  membres: { nom: string; role: string; linkedin: string; photo: Img }[];
+  postuler: { texte: string; label: string; href: string; image: Img };
+}
+
+const { titre, membres, postuler } = Astro.props;
+const a11y = site.accessibilite;
+---
+
+<section class="equipe">
+  <TitreLigne texte={titre} />
+  <ul class="equipe__liste container" role="list">
+    {
+      membres.map((m) => (
+        <li class="membre">
+          <Image class="membre__photo" src={m.photo.src} alt={m.photo.alt} widths={[300, 600]} sizes="(min-width: 48rem) 22rem, 80vw" />
+          <h3 class="membre__nom">{m.nom}</h3>
+          <p class="membre__role">{m.role}</p>
+          <a class="membre__linkedin" href={m.linkedin} target="_blank" rel="noopener">
+            <SocialIcon name="linkedin" />
+            <span class="visually-hidden">
+              {a11y.linkedinDe.replace("{nom}", m.nom)} {a11y.nouvelOnglet}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a class="postuler" href={postuler.href}>
+    <span class="postuler__visuel">
+      <!-- La phrase « Pourquoi pas vous ? » est dessinée dans l'illustration : elle sert de texte alternatif -->
+      <Image src={postuler.image.src} alt={postuler.texte} widths={[300, 600]} sizes="18rem" />
+    </span>
+    <span class="postuler__label">{postuler.label}</span>
+  </a>
+</section>
+
+<style>
+  .equipe {
+    display: grid;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .equipe__liste {
+    display: grid;
+    gap: var(--space-xl) var(--space-lg);
+    max-width: 52rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .membre {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2xs);
+    text-align: center;
+  }
+
+  .membre__photo {
+    width: min(100%, 22rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .membre__nom {
+    font-size: var(--text-md);
+  }
+
+  .membre__role {
+    font-size: var(--text-xs);
+  }
+
+  .membre__linkedin {
+    margin-top: var(--space-xs);
+    color: var(--color-bleu-nuit);
+  }
+
+  .membre__linkedin :global(svg) {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .membre__linkedin:hover {
+    color: var(--color-bleu-clair);
+  }
+
+  .postuler {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-sm);
+    color: var(--color-bleu-nuit);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+  }
+
+  .postuler__visuel {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(80%, 18rem);
+  }
+
+  .postuler__visuel img {
+    width: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .postuler:hover img {
+    transform: rotate(-4deg) scale(1.03);
+  }
+
+  .postuler:hover .postuler__label {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 48rem) {
+    .equipe__liste {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "titre": "Nos valeurs | Yesss Communication",
+    "description": "Chez Yesss Communication, agence sur Marseille, nos valeurs sont importantes. L'engagement, l'authenticité, l'écoute, le partage et le kiff..."
+  },
+  "titre": "Nos valeurs",
+  "sections": [
+    {
+      "type": "valeurs",
+      "items": [
+        {
+          "titre": "l'engagement",
+          "texte": "Convaincus que le secret de la réussite est dans l’engagement, nous nous impliquons pleinement dans les projets de nos clients et impliquons avec nous équipes, collaborateurs et partenaires.",
+          "image": {
+            "src": "../../assets/images/agence/nos-valeurs/valeur-1.webp",
+            "alt": "Illustration des engagements en lien avec nos valeurs. Yesss-Communication agence sur Marseille"
+          }
+        },
+        {
+          "titre": "Être vrai \\ (avec nous-même et les autres)",
+          "texte": "L’authenticité est notre clef pour créer des liens enrichissants et nous épanouir pleinement dans ce que nous sommes et ce que nous faisons.",
+          "image": {
+            "src": "../../assets/images/agence/nos-valeurs/valeur-2.webp",
+            "alt": "Illustration de nos valeurs. Yesss-Communication agence sur Marseille"
+          }
+        },
+        {
+          "titre": "Être à l’écoute",
+          "texte": "Nous développons notre sens de l’écoute et notre curiosité pour mieux comprendre le monde et les personnes qui l’animent.",
+          "image": {
+            "src": "../../assets/images/agence/nos-valeurs/valeur-3.webp",
+            "alt": "Illustration écouter en lien avec nos valeurs. Yesss-Communication agence sur Marseille"
+          }
+        },
+        {
+          "titre": "Cultiver le \"kiff\" \\ et le partager",
+          "texte": "Nous cultivons le plaisir et l’enthousiasme car c’est cette énergie contagieuse qui nous permet d’atteindre les sommets !",
+          "image": {
+            "src": "../../assets/images/agence/nos-valeurs/valeur-4.webp",
+            "alt": "Illustration cultiver en lien avec nos valeurs. Yesss-Communication agence sur Marseille"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+---
+/** Chapeau sous le titre de page : surtitre en capitales bleu clair + paragraphes centrés */
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  surtitre: string;
+  paragraphes: string[];
+}
+
+const { surtitre, paragraphes } = Astro.props;
+---
+
+<section class="chapo container">
+  <Texte class="chapo__surtitre" texte={surtitre} />
+  {paragraphes.map((p) => <Texte texte={p} />)}
+</section>
+
+<style>
+  .chapo {
+    display: grid;
+    gap: var(--space-xs);
+    max-width: 46rem;
+    margin-top: calc(-1 * var(--space-sm));
+    padding-bottom: var(--space-lg);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+
+  .chapo :global(.chapo__surtitre) {
+    margin-bottom: var(--space-xs);
+    color: var(--color-bleu-clair);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>

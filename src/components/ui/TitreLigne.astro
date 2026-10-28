@@ -1,0 +1,40 @@
+---
+/** Titre de section centré entre deux filets pointillés (« La team Yesss », « Partenaires and Co ») */
+import Texte from "./Texte.astro";
+
+interface Props {
+  texte: string;
+}
+
+const { texte } = Astro.props;
+---
+
+<div class="titre-ligne">
+  <Texte as="h2" texte={texte} />
+</div>
+
+<style>
+  .titre-ligne {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .titre-ligne::before,
+  .titre-ligne::after {
+    content: "";
+    border-top: 2px dotted var(--color-bleu-clair);
+  }
+
+  .titre-ligne :global(h2) {
+    font-size: var(--text-xl);
+    text-align: center;
+  }
+
+  .titre-ligne :global(.txt-script) {
+    font-size: 1.3em;
+    line-height: 1;
+    margin-inline: 0.1em;
+  }
+</style>

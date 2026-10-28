@@ -1,0 +1,52 @@
+---
+/** Bandeau d'appel (titre + bouton jaune), bleu clair avec vague ou bleu foncé */
+import Texte from "../ui/Texte.astro";
+import Button from "../ui/Button.astro";
+import Wave from "../ui/Wave.astro";
+
+interface Props {
+  fond: "bleu-clair" | "bleu-fonce";
+  titre: string;
+  bouton: { label: string; href: string };
+}
+
+const { fond, titre, bouton } = Astro.props;
+---
+
+<section class:list={["appel", `appel--${fond}`]}>
+  {fond === "bleu-clair" && <Wave color="var(--color-fond)" flip />}
+  <div class="appel__inner container">
+    <Texte as="h2" class="appel__titre" texte={titre} />
+    <Button {...bouton} variant="jaune" />
+  </div>
+</section>
+
+<style>
+  .appel {
+    position: relative;
+    padding-block: var(--space-2xl);
+    text-align: center;
+  }
+
+  .appel--bleu-clair {
+    padding-top: calc(var(--wave-height) + var(--space-lg));
+    background: var(--color-bleu-clair);
+    color: var(--color-bleu-nuit);
+  }
+
+  .appel--bleu-fonce {
+    background: var(--color-bleu-fonce);
+    color: var(--color-blanc);
+  }
+
+  .appel__inner {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-md);
+  }
+
+  .appel :global(.appel__titre) {
+    font-size: var(--text-xl);
+  }
+</style>

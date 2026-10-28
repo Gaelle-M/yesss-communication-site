@@ -1,0 +1,25 @@
+---
+/** Simple bloc de texte centré */
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  paragraphes: string[];
+}
+
+const { paragraphes } = Astro.props;
+---
+
+<section class="texte container">
+  {paragraphes.map((p) => <Texte texte={p} />)}
+</section>
+
+<style>
+  .texte {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: 46rem;
+    padding-block: var(--space-xl);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+</style>

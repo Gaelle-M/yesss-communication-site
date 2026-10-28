@@ -134,3 +134,6 @@ button {
 .txt-jaune {
   color: var(--color-accent-chaud);
 }
+.txt-blanc {
+  color: var(--color-blanc);
+}

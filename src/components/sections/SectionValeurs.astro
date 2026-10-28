@@ -1,0 +1,111 @@
+---
+/** Liste de valeurs illustrées, en quinconce (image à gauche puis à droite) */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  items: { titre: string; texte: string; image: { src: ImageMetadata; alt: string } }[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="valeurs container">
+  <ol class="valeurs__liste" role="list">
+    {
+      items.map((v) => (
+        <li class="valeur">
+          <Image class="valeur__image" src={v.image.src} alt={v.image.alt} widths={[300, 600]} sizes="(min-width: 48rem) 20rem, 70vw" />
+          <div class="valeur__texte">
+            <Texte as="h2" class="valeur__titre" texte={v.titre} />
+            <Texte texte={v.texte} />
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .valeurs {
+    max-width: 62rem;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .valeurs__liste {
+    display: grid;
+    gap: var(--space-xl);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .valeur {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .valeur__image {
+    width: min(100%, 20rem);
+  }
+
+  .valeur__texte {
+    display: grid;
+    align-content: center;
+    gap: var(--space-xs);
+    max-width: 18rem;
+    font-size: var(--text-sm);
+  }
+
+  .valeur :global(.valeur__titre) {
+    font-size: var(--text-lg);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  /* Une couleur de titre par valeur, comme sur le site actuel */
+  .valeur:nth-child(4n + 1) :global(.valeur__titre) {
+    color: var(--color-bleu-fonce);
+  }
+  .valeur:nth-child(4n + 2) :global(.valeur__titre) {
+    color: var(--color-bleu-clair);
+  }
+  .valeur:nth-child(4n + 3) :global(.valeur__titre) {
+    color: var(--color-bleu-nuit);
+  }
+  .valeur:nth-child(4n + 4) :global(.valeur__titre) {
+    color: var(--color-jaune);
+  }
+
+  @media (min-width: 48rem) {
+    .valeurs__liste {
+      gap: 0;
+    }
+
+    .valeur {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      justify-items: start;
+      gap: var(--space-xl);
+      text-align: left;
+    }
+
+    /* Image à droite une fois sur deux, texte aligné vers l'image */
+    .valeur:nth-child(even) .valeur__image {
+      order: 2;
+      justify-self: start;
+    }
+
+    .valeur:nth-child(even) .valeur__texte {
+      justify-self: end;
+      text-align: right;
+    }
+
+    .valeur:nth-child(odd) .valeur__image {
+      justify-self: end;
+    }
+  }
+</style>

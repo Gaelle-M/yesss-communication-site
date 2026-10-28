@@ -10,6 +10,7 @@
   --color-jaune: #fbbb08;
   --color-beige: #fffaee;
   --color-blanc: #ffffff;
+  --color-bleu-pale: #c1f9fa;  /* complémentaire, hors charte (fond utilisé sur « Nos engagements ») */
 
   /* Rôles (à modifier ici pour changer l'usage d'une couleur partout) */
   --color-texte: var(--color-bleu-nuit);

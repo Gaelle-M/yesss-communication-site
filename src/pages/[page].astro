@@ -1,0 +1,19 @@
+---
+/** Pages « agence » : une page par fichier de src/content/agence/ (/nous/, /nos-valeurs/…) */
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TitrePage from "../components/ui/TitrePage.astro";
+import Sections from "../components/sections/Sections.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("agence");
+  return pages.map((page) => ({ params: { page: page.id }, props: { page } }));
+}
+
+const { meta, titre, sections } = Astro.props.page.data;
+---
+
+<BaseLayout title={meta.titre} description={meta.description} header="plein">
+  <TitrePage texte={titre} />
+  <Sections sections={sections} />
+</BaseLayout>

@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "titre": "Notre raison d'être | Yesss Communication",
+    "description": "Chez Yesss Communication, agence sur Marseille, notre raison d’être qui guide nos choix, nos projets, nos relations et qui s’incarne chaque jour à travers des actions concrètes."
+  },
+  "titre": "Notre raison d'être",
+  "sections": [
+    {
+      "type": "manifeste",
+      "texte": "Mettre la communication au service \\ de l’échange et du partage d’expérience \\ pour créer des \\ {script jaune:liens durables} \\ entre",
+      "image": {
+        "src": "../../assets/images/agence/notre-raison-detre/illustration.webp",
+        "alt": "Illustration notre raison d'être - Yesss Communication agence sur Marseille"
+      },
+      "duo": [
+        "les \\ {script bleu:individus}",
+        "les \\ {script bleu:organisations}"
+      ],
+      "liaison": "et",
+      "conclusion": "Une raison d’être qui guide nos choix, nos projets, nos relations et qui s’incarne chaque jour à travers des actions concrètes."
+    },
+    {
+      "type": "appel",
+      "fond": "bleu-clair",
+      "titre": "Découvrez nos \\ {blanc:engagements}",
+      "bouton": {
+        "label": "Découvrir",
+        "href": "/nos-engagements/"
+      }
+    }
+  ]
+}

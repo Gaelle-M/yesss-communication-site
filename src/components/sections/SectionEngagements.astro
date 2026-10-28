@@ -1,0 +1,197 @@
+---
+/**
+ * Engagements : un bloc par engagement (illustration, titre en script, sous-titre),
+ * avec des questions dépliables (<details>, sans JavaScript) ou une simple liste.
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Texte from "../ui/Texte.astro";
+import Wave from "../ui/Wave.astro";
+
+interface Props {
+  items: {
+    titre: string;
+    sousTitre: string;
+    image: { src: ImageMetadata; alt: string };
+    accordeon: { question: string; reponse: string }[];
+    liste: string[];
+  }[];
+}
+
+const { items } = Astro.props;
+// Fond de chaque bloc ; la vague du bloc suivant reprend la couleur du précédent
+const fonds = ["var(--color-bleu-pale)", "var(--color-bleu-nuit)", "var(--color-bleu-clair)", "var(--color-beige)"];
+---
+
+<div class="engagements">
+  {
+    items.map((e, i) => (
+      <section class="engagement" style={`--fond: ${fonds[i % fonds.length]}`}>
+        {i > 0 && <Wave color={fonds[(i - 1) % fonds.length]} flip={i % 2 === 0} />}
+        <div class="engagement__inner container">
+          <Image class="engagement__image" src={e.image.src} alt={e.image.alt} widths={[200, 400]} sizes="12rem" />
+          <div class="engagement__contenu">
+            <h2 class="engagement__titre">
+              <span class="engagement__script">{e.titre}</span>
+              <Texte as="span" class="engagement__sous-titre" texte={e.sousTitre} />
+            </h2>
+            {e.accordeon.length > 0 && (
+              <div class="engagement__accordeon">
+                {e.accordeon.map((q) => (
+                  <details>
+                    <summary>
+                      <Texte as="span" texte={q.question} />
+                    </summary>
+                    <Texte class="engagement__reponse" texte={q.reponse} />
+                  </details>
+                ))}
+              </div>
+            )}
+            {e.liste.length > 0 && (
+              <ul class="engagement__liste">
+                {e.liste.map((l) => (
+                  <Texte as="li" texte={l} />
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .engagement {
+    position: relative;
+    padding-block: var(--space-xl);
+    background: var(--fond);
+    color: var(--color-bleu-nuit);
+  }
+
+  .engagement + .engagement {
+    padding-top: calc(var(--wave-height) + var(--space-md));
+  }
+
+  /* Bloc foncé (2e) : texte blanc */
+  .engagement:nth-child(4n + 2) {
+    color: var(--color-blanc);
+  }
+
+  .engagement__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-md);
+    max-width: var(--container-narrow);
+  }
+
+  .engagement__image {
+    width: 9rem;
+  }
+
+  .engagement__titre {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .engagement__script {
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 2rem + 4vw, 5.5rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.1;
+  }
+
+  .engagement:nth-child(4n + 2) .engagement__script {
+    color: var(--color-jaune);
+  }
+
+  .engagement:nth-child(4n + 4) .engagement__script {
+    color: var(--color-bleu-clair);
+  }
+
+  .engagement__titre :global(.engagement__sous-titre) {
+    max-width: 36rem;
+    font-size: var(--text-md);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .engagement__accordeon {
+    margin-top: var(--space-lg);
+  }
+
+  details {
+    border-bottom: 1px dotted currentColor;
+  }
+
+  details:last-child {
+    border-bottom: 0;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: var(--space-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-bold);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Pastille « + » / « − » */
+  summary::before {
+    content: "+";
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.5rem;
+    border-radius: 45%;
+    background: var(--color-blanc);
+    color: var(--color-bleu-nuit);
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  details[open] summary::before {
+    content: "−";
+  }
+
+  .engagement :global(.engagement__reponse) {
+    padding: 0 0 var(--space-md) calc(1.75rem + var(--space-sm));
+    font-size: var(--text-sm);
+  }
+
+  .engagement__liste {
+    display: grid;
+    margin: var(--space-md) 0 0;
+    padding-left: var(--space-md);
+    font-size: var(--text-sm);
+  }
+
+  .engagement__liste :global(li) {
+    padding-block: var(--space-sm);
+    border-bottom: 1px dotted currentColor;
+  }
+
+  .engagement__liste :global(li:last-child) {
+    border-bottom: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .engagement__inner {
+      grid-template-columns: 12rem 1fr;
+      column-gap: var(--space-lg);
+    }
+
+    .engagement__image {
+      width: 12rem;
+      margin-top: calc(-1 * var(--space-lg));
+    }
+  }
+</style>
