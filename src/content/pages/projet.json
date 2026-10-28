@@ -1,0 +1,23 @@
+{
+  "titre": "{nom} | Yesss Communication",
+  "descriptionParDefaut": "Découvrez le projet {nom} ({type}) réalisé par Yesss Communication, agence de communication sur Marseille.",
+  "tags": {
+    "label": "Mots-clés du projet",
+    "lien": "Voir les projets {tag}"
+  },
+  "lienSite": "En savoir +",
+  "galerie": {
+    "label": "Images du projet {nom}",
+    "precedent": "Image précédente",
+    "suivant": "Image suivante",
+    "position": "Image {n} sur {total}"
+  },
+  "bandeau": {
+    "titre": [
+      "Envie de faire ",
+      { "text": "rayonner", "style": "script" },
+      " votre marque ?"
+    ],
+    "bouton": { "label": "Briefez-nous !", "href": "/contactez-nous/" }
+  }
+}

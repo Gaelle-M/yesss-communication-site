@@ -5,6 +5,12 @@ import RichText from "./ui/RichText.astro";
 import SocialIcon from "./ui/SocialIcon.astro";
 import { getImage } from "../lib/images";
 
+interface Props {
+  /** Fond clair : on affiche les variantes foncées des logos partenaires */
+  fondClair?: boolean;
+}
+
+const { fondClair = false } = Astro.props;
 const { footer, accessibilite: a11y } = site;
 const { coordonnees: c, reseau, hebergement } = footer;
 ---
@@ -67,7 +73,7 @@ const { coordonnees: c, reseau, hebergement } = footer;
           footer.certifications.map((cert) => (
             <li>
               <a href={cert.href}>
-                <Image src={getImage(cert.image)} alt={cert.alt} height={36} />
+                <Image src={getImage(fondClair && "imageSurClair" in cert ? cert.imageSurClair : cert.image)} alt={cert.alt} height={36} />
               </a>
             </li>
           ))
@@ -82,8 +88,8 @@ const { coordonnees: c, reseau, hebergement } = footer;
 <style>
   .footer {
     padding-block: var(--space-xl) var(--space-lg);
-    background: var(--color-bleu-nuit);
-    color: var(--color-texte-inverse);
+    background: var(--footer-fond);
+    color: var(--footer-texte);
     font-size: var(--text-sm);
   }
 
@@ -104,7 +110,8 @@ const { coordonnees: c, reseau, hebergement } = footer;
   }
 
   .footer a:hover {
-    color: var(--color-jaune);
+    color: var(--footer-survol);
+    text-decoration: underline;
   }
 
   .footer__liens ul {
@@ -153,7 +160,7 @@ const { coordonnees: c, reseau, hebergement } = footer;
 
   .footer__hebergeur {
     max-width: 15rem;
-    color: var(--color-bleu-clair);
+    color: var(--footer-lien);
     font-weight: var(--font-weight-bold);
     text-decoration: underline !important;
   }

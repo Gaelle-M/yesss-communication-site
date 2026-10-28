@@ -76,7 +76,7 @@
       "lien": { "label": "Data Campus, service d'hébergement durable.", "href": "https://datacampus.fr/" }
     },
     "certifications": [
-      { "image": "footer/logo-positive-company.webp", "alt": "Positive Company, entreprise certifiée", "href": "https://www.positive-company.eu/" },
+      { "image": "footer/logo-positive-company.webp", "imageSurClair": "footer/logo-positive-company-noir.webp", "alt": "Positive Company, entreprise certifiée", "href": "https://www.positive-company.eu/" },
       { "image": "footer/logo-meta.webp", "alt": "Logo Meta certification Clémentine Moulin", "href": "/nous/" }
     ],
     "copyright": "YESSS COMMUNICATION © 2025 | Tous droits réservés | Mis à jour en 2026"

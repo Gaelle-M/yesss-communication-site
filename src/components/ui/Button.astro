@@ -2,7 +2,7 @@
 interface Props {
   href: string;
   label: string;
-  variant?: "jaune" | "bleu";
+  variant?: "jaune" | "bleu" | "theme";
 }
 
 const { href, label, variant = "jaune" } = Astro.props;
@@ -41,5 +41,11 @@ const { href, label, variant = "jaune" } = Astro.props;
   .btn--bleu {
     --btn-fond: var(--color-bleu-fonce);
     --btn-texte: var(--color-blanc);
+  }
+
+  /* Couleurs du thème de la page (projets) */
+  .btn--theme {
+    --btn-fond: var(--bouton-fond);
+    --btn-texte: var(--bouton-texte);
   }
 </style>

@@ -7,9 +7,15 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  /** Variante de l'en-tête : "plein" pour les pages sans grand visuel en haut */
+  header?: "transparent" | "plein";
+  /** Variables CSS d'un thème (pages projet), voir src/lib/theme.ts */
+  theme?: string;
+  /** Le fond du pied de page est clair */
+  fondClair?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, header = "transparent", theme, fondClair = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -26,7 +32,7 @@ const { title, description } = Astro.props;
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/cps6zjo.css" />
   </head>
-  <body>
+  <body style={theme}>
     <ul class="skip-links" role="list">
       {
         site.accessibilite.liensEvitement.map((lien) => (
@@ -36,11 +42,11 @@ const { title, description } = Astro.props;
         ))
       }
     </ul>
-    <Header />
-    <main id="contenu" tabindex="-1">
+    <Header variante={header} />
+    <main id="contenu" tabindex="-1" class:list={{ "main--sous-header": header === "plein" }}>
       <slot />
     </main>
-    <Footer />
+    <Footer fondClair={fondClair} />
   </body>
 </html>
 
@@ -71,5 +77,10 @@ const { title, description } = Astro.props;
 
   main:focus {
     outline: none;
+  }
+
+  /* L'en-tête fixe à fond plein ne recouvre pas le haut de la page */
+  .main--sous-header {
+    padding-top: calc(var(--header-height) + 2px);
   }
 </style>

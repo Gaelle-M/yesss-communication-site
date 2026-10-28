@@ -1,0 +1,155 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Galerie from "../../components/ui/Galerie.astro";
+import BandeauCta from "../../components/sections/BandeauCta.astro";
+import { estClair, slugTag, themeVars } from "../../lib/theme";
+import site from "../../content/site.json";
+import textes from "../../content/pages/projet.json";
+
+export async function getStaticPaths() {
+  const projets = await getCollection("projets");
+  return projets.map((projet) => ({ params: { slug: projet.id }, props: { projet } }));
+}
+
+const { projet } = Astro.props;
+const { nom, type, tags, lien, galerie, theme, description } = projet.data;
+const { Content } = await render(projet);
+
+const remplir = (modele: string) => modele.replace("{nom}", nom).replace("{type}", type);
+---
+
+<BaseLayout
+  title={remplir(textes.titre)}
+  description={description ?? remplir(textes.descriptionParDefaut)}
+  header="plein"
+  theme={themeVars(theme)}
+  fondClair={estClair(theme.fond)}
+>
+  <article class="projet">
+    <div class="projet__texte">
+      <p class="projet__type">{type}</p>
+      <h1 class="projet__nom">{nom}</h1>
+      {
+        tags.length > 0 && (
+          <ul class="projet__tags" role="list" aria-label={textes.tags.label}>
+            {tags.map((tag) => (
+              <li>
+                <a href={`/projets/?tag=${slugTag(tag)}`} aria-label={textes.tags.lien.replace("{tag}", `#${tag}`)}>
+                  #{tag}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      <div class="projet__description">
+        <Content />
+      </div>
+      {
+        lien && (
+          <a class="projet__lien" href={lien} target="_blank" rel="noopener">
+            <span aria-hidden="true">→ </span>
+            {textes.lienSite}
+            <span class="visually-hidden">
+              : {nom} {site.accessibilite.nouvelOnglet}
+            </span>
+          </a>
+        )
+      }
+    </div>
+
+    <div class="projet__galerie">
+      <Galerie images={galerie} labels={{ ...textes.galerie, label: remplir(textes.galerie.label) }} />
+    </div>
+  </article>
+
+  <BandeauCta titre={textes.bandeau.titre} bouton={textes.bandeau.bouton} image={theme.bandeau} />
+</BaseLayout>
+
+<style>
+  .projet {
+    display: grid;
+    background: var(--projet-fond);
+    color: var(--projet-texte);
+  }
+
+  .projet__texte {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl) var(--gutter);
+    text-align: center;
+  }
+
+  .projet__type {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  .projet__nom {
+    margin-block: var(--space-2xs) var(--space-xs);
+    font-family: var(--font-script);
+    font-size: clamp(3.5rem, 2.5rem + 3vw, 5.3rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 0.9;
+  }
+
+  .projet__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.4em;
+    max-width: 36rem;
+    padding: 0 0 var(--space-md);
+    border-bottom: 1px solid currentColor;
+    font-size: var(--text-md);
+    list-style: none;
+  }
+
+  .projet__tags a {
+    text-decoration: none;
+  }
+
+  .projet__tags a:hover {
+    text-decoration: underline;
+  }
+
+  .projet__description {
+    display: grid;
+    gap: var(--space-xs);
+    max-width: 38rem;
+    margin-top: var(--space-xs);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
+
+  .projet__lien {
+    margin-top: var(--space-2xs);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .projet__galerie {
+    min-width: 0;
+  }
+
+  @media (min-width: 60rem) {
+    .projet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .projet__texte {
+      justify-items: start;
+      padding-inline: clamp(var(--space-lg), 8vw, 9.5rem) var(--space-xl);
+      text-align: left;
+    }
+
+    .projet__tags {
+      justify-content: flex-start;
+      max-width: 23.5rem;
+    }
+  }
+</style>

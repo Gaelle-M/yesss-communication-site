@@ -54,6 +54,22 @@
   --radius-pill: 999px;
   --wave-height: clamp(3rem, 8vw, 7.5rem);
   --header-height: 5rem;
+  /* Couleurs de l'en-tête, du logo et du pied de page.
+     Une page projet les remplace par les couleurs de son thème (voir src/lib/theme.ts). */
+  --header-fond: transparent;
+  --header-fond-scroll: var(--color-bleu-fonce);   /* fond du menu fixe une fois la page défilée */
+  --header-texte: var(--color-blanc);
+  --header-bordure: transparent;
+  --nav-survol: var(--color-jaune);                /* lien survolé ou page en cours dans le menu */
+  --logo-couleur: var(--color-blanc);
+  --logo-accent: var(--color-jaune);
+  --footer-fond: var(--color-bleu-nuit);
+  --footer-texte: var(--color-blanc);
+  --footer-lien: var(--color-bleu-clair);
+  --footer-survol: var(--color-jaune);
+  --header-max: 90rem;                        /* largeur max du menu desktop (plus large que le contenu) */
+  --logo-width: clamp(7rem, 5rem + 5vw, 8.5rem);
+  --nav-logo-gap: clamp(2.5rem, 4vw, 6rem);    /* espace minimum entre le logo et le menu */
 
   --transition: 0.3s ease;
 }

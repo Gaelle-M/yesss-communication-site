@@ -1,16 +1,22 @@
 ---
-import { Image } from "astro:assets";
 import site from "../content/site.json";
-import logo from "../assets/images/logo-yesss.svg";
+import Logo from "./ui/Logo.astro";
 
+interface Props {
+  /** "transparent" : posé sur un visuel (accueil) ; "plein" : fond uni et filet en bas (projets…) */
+  variante?: "transparent" | "plein";
+}
+
+const { variante = "transparent" } = Astro.props;
 const { menu, accessibilite: a11y } = site;
 const current = Astro.url.pathname;
+const estActif = (href: string) => current === href || (href !== "/" && current.startsWith(href));
 ---
 
-<header class="header" id="en-tete">
+<header class:list={["header", `header--${variante}`]} id="en-tete">
   <div class="header__inner container">
     <a class="header__logo" href="/">
-      <Image src={logo} alt={a11y.logoAccueil} width={170} loading="eager" />
+      <Logo label={a11y.logoAccueil} />
     </a>
 
     <button
@@ -31,7 +37,7 @@ const current = Astro.url.pathname;
           <ul class="nav__list" role="list">
             {groupe.map((item) => (
               <li class:list={["nav__item", { "nav__item--parent": "enfants" in item }]}>
-                <a class="nav__link" href={item.href} aria-current={current === item.href ? "page" : undefined}>
+                <a class="nav__link" href={item.href} aria-current={estActif(item.href) ? "page" : undefined}>
                   {item.label}
                 </a>
                 {"enfants" in item && item.enfants && (
@@ -79,7 +85,11 @@ const current = Astro.url.pathname;
     document.body.style.overflow = open ? "hidden" : "";
   }
 
-  burger?.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+  const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 0);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  burger?.addEventListener("click",() => setMenu(burger.getAttribute("aria-expanded") !== "true"));
 
   header?.querySelectorAll<HTMLButtonElement>(".nav__toggle").forEach((toggle) => {
     toggle.addEventListener("click", () => {
@@ -101,11 +111,20 @@ const current = Astro.url.pathname;
 </script>
 
 <style>
+  /* Menu fixe, toujours visible : transparent sur le hero, fond bleu pétrole dès qu'on défile */
   .header {
-    position: absolute;
+    position: fixed;
     inset: 0 0 auto;
     z-index: 10;
-    color: var(--color-texte-inverse);
+    border-bottom: 2px solid var(--header-bordure);
+    background: var(--header-fond);
+    color: var(--header-texte);
+    transition: background-color var(--transition), box-shadow var(--transition);
+  }
+
+  .header.is-scrolled {
+    background: var(--header-fond-scroll);
+    box-shadow: 0 0.25rem 1rem rgb(3 40 52 / 0.25);
   }
 
   .header__inner {
@@ -120,7 +139,7 @@ const current = Astro.url.pathname;
     position: relative;
     z-index: 2;
     display: block;
-    width: clamp(7rem, 5rem + 5vw, 8.5rem);
+    width: var(--logo-width);
   }
 
   .nav__list {
@@ -136,7 +155,13 @@ const current = Astro.url.pathname;
   .nav__link:hover,
   .nav__sublink:hover,
   .nav__link[aria-current="page"] {
-    color: var(--color-jaune);
+    color: var(--nav-survol);
+  }
+
+  .nav__link[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
   }
 
   .nav__toggle {
@@ -175,7 +200,7 @@ const current = Astro.url.pathname;
   }
 
   /* ---------- Mobile : burger + panneau plein écran ---------- */
-  @media (max-width: 63.99rem) {
+  @media (max-width: 79.99rem) {
     .header__burger {
       position: absolute;
       right: 0;
@@ -238,7 +263,7 @@ const current = Astro.url.pathname;
       display: none;
       padding: calc(var(--header-height) + var(--space-md)) var(--gutter) var(--space-xl);
       overflow-y: auto;
-      background: var(--color-bleu-nuit);
+      background: var(--header-fond-scroll);
     }
 
     .is-open .nav {
@@ -275,8 +300,12 @@ const current = Astro.url.pathname;
     }
   }
 
-  /* ---------- Desktop : menu en 2 blocs de part et d'autre du logo ---------- */
-  @media (min-width: 64rem) {
+  /* ---------- Desktop : menu en 2 blocs poussés vers les bords, de part et d'autre du logo ---------- */
+  @media (min-width: 80rem) {
+    .header__inner {
+      width: min(100% - 2 * var(--gutter), var(--header-max));
+    }
+
     .header__burger {
       display: none;
     }
@@ -284,17 +313,22 @@ const current = Astro.url.pathname;
     .nav {
       position: absolute;
       inset: 0;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr calc(var(--logo-width) + 2 * var(--nav-logo-gap)) 1fr;
       align-items: center;
-      justify-content: space-between;
     }
 
     .nav__list {
       display: flex;
       align-items: center;
-      gap: clamp(1rem, 2vw, 2.25rem);
+      gap: clamp(1rem, 1.6vw, 2.25rem);
       font-size: var(--text-sm);
       font-weight: var(--font-weight-bold);
+    }
+
+    .nav__list:last-child {
+      grid-column: 3;
+      justify-self: end;
     }
 
     .nav__item--parent {

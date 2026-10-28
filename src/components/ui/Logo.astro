@@ -1,0 +1,42 @@
+---
+/**
+ * Logo Yesss en SVG intégré : ses couleurs suivent les variables
+ * --logo-couleur et --logo-accent (blanc + jaune par défaut, couleur du thème sur un projet).
+ */
+import svg from "../../assets/images/logo-yesss.svg?raw";
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+const markup = svg
+  .replace(/<\?xml[^>]*>/, "")
+  .replace(/<defs>[\s\S]*?<\/defs>/, "")
+  .replace(/\s(id|data-name)="[^"]*"/g, "")
+  .replace(/class="cls-1"/g, 'class="logo__texte"')
+  .replace(/class="cls-2"/g, 'class="logo__accent"')
+  .replace("<svg", `<svg role="img" aria-label="${label}" focusable="false"`);
+---
+
+<span class="logo" set:html={markup} />
+
+<style>
+  .logo {
+    display: block;
+  }
+
+  .logo :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .logo :global(.logo__texte) {
+    fill: var(--logo-couleur);
+  }
+
+  .logo :global(.logo__accent) {
+    fill: var(--logo-accent);
+  }
+</style>

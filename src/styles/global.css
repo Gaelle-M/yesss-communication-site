@@ -44,6 +44,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* Les ancres (liens d'évitement…) ne passent pas sous le menu fixe */
+  scroll-padding-top: var(--header-height);
 }
 
 body {
