@@ -29,4 +29,60 @@ const projets = defineCollection({
     }),
 });
 
-export const collections = { projets };
+// Un fichier JSON par expertise dans src/content/expertises/ : une suite de sections typées
+const bouton = z.object({ label: z.string(), href: z.string() });
+const expertises = defineCollection({
+  loader: glob({ pattern: "*.json", base: "./src/content/expertises" }),
+  schema: ({ image }) => {
+    const img = z.object({ src: image(), alt: z.string() });
+    const section = z.discriminatedUnion("type", [
+      z.object({ type: z.literal("intro"), titre: z.string(), paragraphes: z.array(z.string()), image: img }),
+      z.object({
+        type: z.literal("missions"),
+        titre: z.string(),
+        sousTitre: z.string(),
+        items: z.array(z.object({ titre: z.string(), texte: z.string() })),
+        objectif: z.string(),
+      }),
+      z.object({
+        type: z.literal("pictos"),
+        intro: z.string(),
+        titre: z.string(),
+        texte: z.string(),
+        items: z.array(z.object({ image: img, texte: z.string() })),
+        note: z.string(),
+      }),
+      z.object({
+        type: z.literal("colonnes"),
+        titre: z.string(),
+        // chaque bloc : un paragraphe (texte) ou une liste (tableau de textes)
+        colonnes: z.array(z.object({ titre: z.string(), contenu: z.array(z.union([z.string(), z.array(z.string())])) })),
+      }),
+      z.object({
+        type: z.literal("pourquoi"),
+        titre: z.string(),
+        paragraphes: z.array(z.string()),
+        atoutsLabel: z.string(),
+        atouts: z.array(z.string()),
+        conclusion: z.string(),
+      }),
+      z.object({ type: z.literal("cta"), titre: z.string(), texte: z.string(), bouton }),
+      z.object({
+        type: z.literal("realisations"),
+        titre: z.string(),
+        projets: z.array(z.object({ projet: z.string(), image: img })),
+        bouton,
+      }),
+    ]);
+    return z.object({
+      ordre: z.number(),
+      nom: z.string(),
+      titre: z.string(),
+      vignette: img,
+      meta: z.object({ titre: z.string(), description: z.string() }),
+      sections: z.array(section),
+    });
+  },
+});
+
+export const collections = { projets, expertises };

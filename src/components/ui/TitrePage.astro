@@ -1,0 +1,31 @@
+---
+/** Grand titre de page centré (h1), en balisage léger : « Communication \ {script jaune:print} » */
+import Texte from "./Texte.astro";
+
+interface Props {
+  texte: string;
+}
+
+const { texte } = Astro.props;
+---
+
+<div class="titre-page container">
+  <Texte as="h1" texte={texte} />
+</div>
+
+<style>
+  .titre-page {
+    padding-block: var(--space-xl) var(--space-md);
+    text-align: center;
+  }
+
+  .titre-page :global(h1) {
+    font-size: var(--text-2xl);
+  }
+
+  .titre-page :global(.txt-script) {
+    display: inline-block;
+    margin-top: -0.12em;
+    line-height: 1;
+  }
+</style>

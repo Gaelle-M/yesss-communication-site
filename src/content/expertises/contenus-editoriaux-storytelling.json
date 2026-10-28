@@ -1,0 +1,109 @@
+{
+  "ordre": 4,
+  "nom": "Contenus éditoriaux & storytelling",
+  "vignette": {
+    "src": "../../assets/images/expertises/contenus-editoriaux-storytelling/vignette.webp",
+    "alt": "Expertise contenus éditoriaux et storytelling Yesss Communication agence à Marseille"
+  },
+  "meta": {
+    "titre": "Contenus éditoriaux & storytelling | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille, nous transformons vos idées, vos savoir-faire et vos valeurs en histoires qui marquent les esprits et engagements"
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Les bons contenus ne se consomment pas, } ils se retiennent.",
+      "paragraphes": [
+        "Chez Yesss Communication, nous transformons vos idées, vos savoir-faire et vos valeurs en **histoires qui marquent les esprits et engagent vos publics**.",
+        "Nous vous accompagnons dans la création de contenus éditoriaux sur-mesure, pensés pour être **authentiques, pertinents et optimisés**."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/contenus-editoriaux-storytelling/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - Rédaction de contenu éditoriaux et storytelling"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous intervenons pour :",
+      "items": [
+        {
+          "titre": "La rédaction",
+          "texte": "de contenus web optimisés SEO"
+        },
+        {
+          "titre": "La conception",
+          "texte": "de newsletters, blogs et articles à forte valeur ajoutée"
+        },
+        {
+          "titre": "La mise en récit",
+          "texte": "(storytelling) de votre marque, vos produits et vos engagements"
+        },
+        {
+          "titre": "La création",
+          "texte": "de supports éditoriaux adaptés à vos canaux (site internet, réseaux sociaux, print…)"
+        },
+        {
+          "titre": "La valorisation",
+          "texte": "factuelle de vos savoir-faire et de vos talents"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : créer une communication qui inspire la confiance et favorise des liens durables avec vos parties prenantes."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce que chez nous, les contenus ne sont pas de simples mots : ce sont des **histoires construites pour durer**."
+      ],
+      "atoutsLabel": "Nos points forts :",
+      "atouts": [
+        "Une expertise en **rédaction et storytelling** alliant créativité et efficacité",
+        "Une maîtrise du **SEO** pour accroître votre visibilité",
+        "Une approche responsable : nous privilégions des contenus **authentiques, uniques et alignés avec vos valeurs**"
+      ],
+      "conclusion": "Avec Yesss Communication, vos contenus deviennent de véritables **leviers d’inspiration et d’engagement**."
+    },
+    {
+      "type": "cta",
+      "titre": "UN PROJET DE CONTENUS {jaune:ÉDITORIAUX & STORYTELLING ?}",
+      "texte": "Donnez du poids à vos mots et marquez durablement les esprits grâce à une ligne éditoriale forte et authentique. \\ Échangeons dès aujourd'hui !",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "moulins-soufflet",
+          "image": {
+            "src": "../../assets/images/expertises/contenus-editoriaux-storytelling/realisation-moulins-soufflet.webp",
+            "alt": "Slide 2 projet moulins soufflet - Yesss Communication"
+          }
+        },
+        {
+          "projet": "et-moi",
+          "image": {
+            "src": "../../assets/images/expertises/contenus-editoriaux-storytelling/realisation-et-moi.webp",
+            "alt": "Slide 1 projet &moi - Yesss Communication"
+          }
+        },
+        {
+          "projet": "the-yachter",
+          "image": {
+            "src": "../../assets/images/expertises/contenus-editoriaux-storytelling/realisation-the-yachter.webp",
+            "alt": "Slide 1 projet The Yachter - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Contenus éditoriaux \\ {script jaune:& storytelling}"
+}

@@ -1,0 +1,15 @@
+---
+/** Affiche un texte en balisage léger (voir src/lib/inline.ts) dans la balise demandée. */
+import { inline } from "../../lib/inline";
+
+interface Props {
+  texte: string;
+  as?: "p" | "h1" | "h2" | "h3" | "span" | "li" | "blockquote";
+  class?: string;
+  id?: string;
+}
+
+const { texte, as: Balise = "p", class: className, id } = Astro.props;
+---
+
+<Balise class={className} id={id} set:html={inline(texte)} />

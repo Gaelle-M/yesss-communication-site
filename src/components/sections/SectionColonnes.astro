@@ -1,0 +1,105 @@
+---
+import Texte from "../ui/Texte.astro";
+import fond from "../../assets/images/accueil/hero-fond.webp";
+import { Image } from "astro:assets";
+
+interface Props {
+  titre: string;
+  /** Chaque bloc : un paragraphe (texte) ou une liste (tableau de textes) */
+  colonnes: { titre: string; contenu: (string | string[])[] }[];
+}
+
+const { titre, colonnes } = Astro.props;
+---
+
+<section class="colonnes">
+  <Image class="colonnes__fond" src={fond} alt="" widths={[800, 1000]} sizes="100vw" />
+  <div class="colonnes__inner container">
+    <Texte as="h2" class="colonnes__titre" texte={titre} />
+    <div class="colonnes__grille">
+      {
+        colonnes.map((col) => (
+          <div class="colonnes__col">
+            <Texte as="h3" class="colonnes__col-titre" texte={col.titre} />
+            {col.contenu.map((bloc) =>
+              Array.isArray(bloc) ? (
+                <ul>
+                  {bloc.map((li) => (
+                    <Texte as="li" texte={li} />
+                  ))}
+                </ul>
+              ) : (
+                <Texte texte={bloc} />
+              ),
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .colonnes {
+    position: relative;
+    padding-block: var(--space-xl);
+    overflow: hidden;
+    background: var(--color-bleu-fonce);
+    color: var(--color-blanc);
+  }
+
+  .colonnes__fond {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .colonnes__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+  }
+
+  .colonnes :global(.colonnes__titre) {
+    font-size: var(--text-lg);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .colonnes__grille {
+    display: grid;
+    gap: var(--space-lg) var(--space-xl);
+  }
+
+  .colonnes__col {
+    display: grid;
+    align-content: start;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+  }
+
+  .colonnes :global(.colonnes__col-titre) {
+    margin-bottom: var(--space-xs);
+    color: var(--color-jaune);
+    font-family: var(--font-script);
+    font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+    font-weight: var(--font-weight-regular);
+    text-align: center;
+  }
+
+  .colonnes ul {
+    display: grid;
+    gap: var(--space-2xs);
+    margin: 0;
+    padding-left: var(--space-md);
+  }
+
+  @media (min-width: 48rem) {
+    .colonnes__grille {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

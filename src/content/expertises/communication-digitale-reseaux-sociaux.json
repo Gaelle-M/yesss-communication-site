@@ -1,0 +1,105 @@
+{
+  "ordre": 2,
+  "nom": "Communication digitale & réseaux sociaux",
+  "vignette": {
+    "src": "../../assets/images/expertises/communication-digitale-reseaux-sociaux/vignette.webp",
+    "alt": "Expertise communication digitale et réseaux sociaux - Yesss Communication agence sur Marseille"
+  },
+  "meta": {
+    "titre": "Communication digitale & réseaux sociaux Marseille | Yesss Communication",
+    "description": "Chez YESSS Communication agence à Marseille, nous construisons des stratégies digitales sur-mesure pour aider votre marque à être visible, engageante et crédible."
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Créez du lien, } engagez, inspirez !",
+      "paragraphes": [
+        "Chez Yesss Communication, nous transformons vos présences digitales en **espaces vivants d’échange et de proximité** avec vos communautés.",
+        "Nous construisons des stratégies digitales sur-mesure pour aider votre marque à **être visible, engageante et crédible**."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/communication-digitale-reseaux-sociaux/intro.webp",
+        "alt": "Logo Meta certified - Yesss Communication"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous vous accompagnons pour",
+      "items": [
+        {
+          "titre": "Définir",
+          "texte": "une ligne éditoriale claire et cohérente"
+        },
+        {
+          "titre": "Créer",
+          "texte": "des contenus originaux, impactants et adaptés à chaque plateforme (Instagram, LinkedIn, TikTok, Facebook…)"
+        },
+        {
+          "titre": "Valoriser",
+          "texte": "l'expérience utilisateur par le biais de collaborations qui font sens avec des créateurs UGC, influenceurs..."
+        },
+        {
+          "titre": "Piloter",
+          "texte": "vos performances grâce à des analyses et indicateurs précis"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : transformer vos réseaux sociaux en **vecteurs puissants de notoriété et de confiance**."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce qu’une bonne stratégie digitale ne repose pas uniquement sur la technique, mais aussi sur **l’humain**."
+      ],
+      "atoutsLabel": "Notre différence :",
+      "atouts": [
+        "Une expertise en communication digitale associée à une démarche responsable,",
+        "Une approche créative qui valorise vos savoir-faire et vos engagements,",
+        "Une équipe à taille humaine qui fait rimer **enthousiasme et professionnalisme.**"
+      ],
+      "conclusion": "Avec Yesss Communication, vos réseaux sociaux deviennent bien plus qu’un simple canal : **c'est un lieu d’échange authentique et fédérateur**."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet de Communication digitale et {jaune:réseaux sociaux ?}",
+      "texte": "Vos réseaux sociaux manquent d'engagement, ne reflètent plus votre image ou vous manquez de temps pour fédérer votre communauté ? \\ Parlons de vos objectifs !",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "moulins-soufflet",
+          "image": {
+            "src": "../../assets/images/expertises/communication-digitale-reseaux-sociaux/realisation-moulins-soufflet.webp",
+            "alt": "Slide 2 projet moulins soufflet - Yesss Communication"
+          }
+        },
+        {
+          "projet": "maison-de-la-glace",
+          "image": {
+            "src": "../../assets/images/expertises/communication-digitale-reseaux-sociaux/realisation-maison-de-la-glace.webp",
+            "alt": "Slide 1 projet Maison de la Glace - Yesss Communication"
+          }
+        },
+        {
+          "projet": "popelino",
+          "image": {
+            "src": "../../assets/images/expertises/communication-digitale-reseaux-sociaux/realisation-popelino.webp",
+            "alt": "Slide 2 projet Popelino - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Communication digitale & \\ {script jaune:réseaux sociaux}"
+}

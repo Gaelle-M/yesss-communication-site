@@ -1,0 +1,45 @@
+---
+import Texte from "../ui/Texte.astro";
+import Button from "../ui/Button.astro";
+
+interface Props {
+  titre: string;
+  texte: string;
+  bouton: { label: string; href: string };
+}
+
+const { titre, texte, bouton } = Astro.props;
+---
+
+<section class="cta">
+  <div class="cta__inner container">
+    <Texte as="h2" class="cta__titre" texte={titre} />
+    <Texte class="cta__texte" texte={texte} />
+    <Button {...bouton} variant="jaune" />
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding-block: var(--space-xl);
+    background: var(--color-bleu-fonce);
+    color: var(--color-blanc);
+    text-align: center;
+  }
+
+  .cta__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-md);
+    max-width: 48rem;
+  }
+
+  .cta :global(.cta__titre) {
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+  }
+
+  .cta :global(.cta__texte) {
+    font-size: var(--text-sm);
+  }
+</style>

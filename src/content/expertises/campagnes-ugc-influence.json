@@ -1,0 +1,194 @@
+{
+  "ordre": 5,
+  "nom": "Campagnes UGC & Influence",
+  "vignette": {
+    "src": "../../assets/images/expertises/campagnes-ugc-influence/vignette.webp",
+    "alt": "Expertise campagnes UGC et influence - Yesss Communication agence sur Marseille"
+  },
+  "meta": {
+    "titre": "Campagnes UGC & Influence | Yesss Communication",
+    "description": "Chez YESSS Communication, nous concevons des campagnes UGC & influence qui renforcent votre notoriété, nourrissent votre image de marque et génèrent des résultats concrets"
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:l'humain }comme levier d’image et de performance",
+      "paragraphes": [
+        "L’**UGC** (User Generated Content) et l’**influence** sont aujourd’hui des accélérateurs puissants de visibilité. Mais au-delà de la tendance, ce sont surtout des **vecteurs d’image et de performance**.",
+        "Chez YESSS Communication, nous concevons des campagnes UGC & influence qui **renforcent votre notoriété**, nourrissent votre image de marque et **génèrent des résultats concrets**.",
+        "Parce qu’un **contenu incarné, sincère et aligné** avec vos valeurs est toujours plus puissant !"
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/campagnes-ugc-influence/intro.webp",
+        "alt": "Campagnes UGC et influence - Yesss Communication agence sur Marseille"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous posons un cadre stratégique :",
+      "items": [
+        {
+          "titre": "Cadrage",
+          "texte": "des objectifs (images, notoriété, conversion...)"
+        },
+        {
+          "titre": "Identification",
+          "texte": "des cibles"
+        },
+        {
+          "titre": "Définition",
+          "texte": "du territoire éditorial"
+        },
+        {
+          "titre": "Choix",
+          "texte": "des formats et plateformes"
+        },
+        {
+          "titre": "Détermination",
+          "texte": "des indicateurs de performance"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : amplifier l’**impact** et **maximiser** le retour sur investissement."
+    },
+    {
+      "type": "pictos",
+      "intro": "**{bleu:L’UGC et l’influence}** ne sont pas des actions isolées. Elles s’intègrent dans une vision globale de votre communication sur les réseaux sociaux.",
+      "titre": "Sélectionner des créateurs pour ce qu’ils sont vraiment",
+      "texte": "Créateurs UGC et influenceurs, nous ne choisissons pas des créateurs uniquement pour leur nombre d’abonnés. Nous les choisissons pour :",
+      "items": [
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-camera.webp",
+            "alt": ""
+          },
+          "texte": "La qualité de leur contenu"
+        },
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-desktop.webp",
+            "alt": ""
+          },
+          "texte": "Leur univers visuel et éditorial"
+        },
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-carte.webp",
+            "alt": ""
+          },
+          "texte": "La cohérence avec votre marque"
+        },
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-telephone.webp",
+            "alt": ""
+          },
+          "texte": "Leur capacité narrative"
+        },
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-mains.webp",
+            "alt": ""
+          },
+          "texte": "Leurs valeurs"
+        },
+        {
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/picto-budget.webp",
+            "alt": ""
+          },
+          "texte": "Le cadre budgétaire définit"
+        }
+      ],
+      "note": "*Nous privilégions les collaborations sincères et pertinentes, capables de créer une véritable connexion entre votre communauté et celle des influenceurs sélectionnés.*"
+    },
+    {
+      "type": "colonnes",
+      "titre": "Chez Yesss Communication, nous ne séparons pas image et résultats.",
+      "colonnes": [
+        {
+          "titre": "Piloter la campagne de A à Z",
+          "contenu": [
+            "**Nous assurons :**",
+            [
+              "La prise de contact et la négociation",
+              "La rédaction des briefs",
+              "Le suivi des productions",
+              "La coordination globale"
+            ],
+            "Avec **exigence** et **transparence**, pour toutes les parties prenantes."
+          ]
+        },
+        {
+          "titre": "Transformer l’image en performance",
+          "contenu": [
+            "À la **stratégie d’influence**, nous associons une **stratégie de performance** dans laquelle de nombreux leviers peuvent être activés :",
+            [
+              "Sponsorisation des contenus",
+              "Réutilisation des contenus UGC en campagnes publicitaires",
+              "Marketing automation",
+              "Retargeting"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce que l’**humain** reste plus fort que l’algorithme !",
+        "À l’heure où l’IA permet de produire des volumes massifs de contenus, nous faisons un choix clair : celui de l’**authenticité** avec des créateurs de contenus de **qualité**.",
+        "Un contenu incarné, porté par une vraie personne, avec une **vraie expérience**, génère :"
+      ],
+      "atoutsLabel": "",
+      "atouts": [
+        "Plus de confiance",
+        "Plus d’engagement",
+        "Plus de conversion"
+      ],
+      "conclusion": "La performance ne vient pas uniquement de la technique. Elle vient de l’**émotion**, de l’**identification**, de la **crédibilité.** \\ Avec Yesss Communication, nous construisons des campagnes alignées avec **votre identité, intégrées à votre stratégie globale** et orientées résultats."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet DE CAMPAGNES {jaune:UGC & INFLUENCE ?}",
+      "texte": "Vous souhaitez booster votre notoriété, générer de l'engagement et rassurer vos prospects grâce à des contenus incarnés et authentiques ? \\ Échangeons sur vos objectifs.",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations }",
+      "projets": [
+        {
+          "projet": "fitoform",
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/realisation-fitoform.webp",
+            "alt": "Slide projet Fitoform UGC - Yesss Communication agence sur Marseille"
+          }
+        },
+        {
+          "projet": "popelino",
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/realisation-popelino.webp",
+            "alt": "Slide projet Popelino UGC - Yesss Communication agence sur Marseille"
+          }
+        },
+        {
+          "projet": "pop-fruit",
+          "image": {
+            "src": "../../assets/images/expertises/campagnes-ugc-influence/realisation-pop-fruit.webp",
+            "alt": "Slide projet PopFruit UGC - Yesss Communication agence à Marseille"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Campagnes UGC & \\ {script jaune:influence}"
+}

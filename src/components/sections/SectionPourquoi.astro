@@ -1,0 +1,114 @@
+---
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  titre: string;
+  paragraphes: string[];
+  atoutsLabel: string;
+  atouts: string[];
+  conclusion: string;
+}
+
+const { titre, paragraphes, atoutsLabel, atouts, conclusion } = Astro.props;
+---
+
+<section class="pourquoi">
+  <div class="pourquoi__inner container">
+    <Texte as="h2" class="pourquoi__titre" texte={titre} />
+    <div class="pourquoi__texte">
+      {paragraphes.map((p) => <Texte texte={p} />)}
+      {atoutsLabel && <Texte texte={atoutsLabel} />}
+      <ul class="pourquoi__atouts" role="list">
+        {atouts.map((a) => <Texte as="li" texte={a} />)}
+      </ul>
+    </div>
+    {conclusion && <Texte class="pourquoi__conclusion" texte={conclusion} />}
+  </div>
+</section>
+
+<style>
+  .pourquoi {
+    padding-block: var(--space-xl);
+    background: var(--color-beige);
+  }
+
+  .pourquoi__inner {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+  }
+
+  .pourquoi :global(.pourquoi__titre) {
+    font-size: var(--text-2xl);
+    text-align: center;
+  }
+
+  .pourquoi :global(.pourquoi__titre .txt-script) {
+    display: inline-block;
+    margin-block: -0.2em -0.15em;
+    margin-left: -0.15em;
+    line-height: 1;
+  }
+
+  .pourquoi__texte {
+    display: grid;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+  }
+
+  .pourquoi__atouts {
+    display: grid;
+    gap: var(--space-xs);
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Puce : rond jaune avec coche blanche, dessiné en CSS */
+  .pourquoi__atouts :global(li) {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .pourquoi__atouts :global(li)::before {
+    content: "";
+    position: absolute;
+    top: 0.05em;
+    left: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--color-jaune);
+  }
+
+  .pourquoi__atouts :global(li)::after {
+    content: "";
+    position: absolute;
+    top: 0.3em;
+    left: 0.48rem;
+    width: 0.35rem;
+    height: 0.65rem;
+    border-right: 2px solid var(--color-blanc);
+    border-bottom: 2px solid var(--color-blanc);
+    transform: rotate(45deg);
+  }
+
+  .pourquoi :global(.pourquoi__conclusion) {
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+
+  @media (min-width: 48rem) {
+    .pourquoi__inner {
+      grid-template-columns: 1fr 1.3fr;
+      column-gap: var(--space-xl);
+    }
+
+    .pourquoi :global(.pourquoi__titre) {
+      text-align: left;
+    }
+
+    .pourquoi :global(.pourquoi__conclusion) {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

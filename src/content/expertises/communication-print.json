@@ -1,0 +1,113 @@
+{
+  "ordre": 7,
+  "nom": "Communication print",
+  "vignette": {
+    "src": "../../assets/images/expertises/communication-print/vignette.webp",
+    "alt": "Expertise communication print - Yesss Communication agence sur Marseille"
+  },
+  "meta": {
+    "titre": "Communication print | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille nous créons des supports print qui valorisent votre image et prolongent votre communication avec impact..."
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:À l’ère du tout-digital, } le papier garde une force unique : il se touche, il se conserve, il marque.",
+      "paragraphes": [
+        "Chez Yesss Communication, nous créons des supports print qui **valorisent votre image et prolongent votre communication avec impact et élégance**.",
+        "Nous vous accompagnons dans la conception de supports imprimés adaptés à vos objectifs de communication."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/communication-print/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - communication print flyers plaquettes cartes de visites roll up"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous intervenons pour :",
+      "items": [
+        {
+          "titre": "La création",
+          "texte": "de plaquettes, catalogues, flyers, affiches et brochures"
+        },
+        {
+          "titre": "La réalisation",
+          "texte": "[de packaging](/nos-expertises/creation-de-packaging/)"
+        },
+        {
+          "titre": "La conception",
+          "texte": "de supports événementiels (programmes, invitations, kakémonos, signalétique…)"
+        },
+        {
+          "titre": "La mise en page",
+          "texte": "de rapports annuels, chartes et documents institutionnels"
+        },
+        {
+          "titre": "L'adaptation",
+          "texte": "de votre identité visuelle sur tous vos supports imprimés"
+        },
+        {
+          "titre": "La gestion",
+          "texte": "des contraintes techniques liées à l’impression (formats, découpes, finitions, papiers)"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : concevoir des supports print qui **captent l’attention, véhiculent vos messages avec clarté et renforcent votre notoriété**."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce qu’un support print efficace ne se contente pas d’être beau : il **transmet vos valeurs et structure votre discours.**"
+      ],
+      "atoutsLabel": "Nos atouts :",
+      "atouts": [
+        "Une approche **stratégique du design** pour des supports clairs, cohérents et percutants",
+        "Un sens du détail graphique allié à une **solide connaissance des contraintes techniques du print**",
+        "Une équipe créative qui décline votre identité visuelle avec justesse et harmonie **sur tous vos supports**"
+      ],
+      "conclusion": "Avec Yesss Communication, vos supports imprimés deviennent des **vecteurs d’image élégants, impactants et maîtrisés.**"
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet de {jaune:COMMUNICATION PRINT ?}",
+      "texte": "Brochures, plaquettes, affiches ou cartes de visite : vos supports imprimés reflètent-ils vraiment la qualité et les valeurs de votre entreprise ? \\ Discutons-en dès maintenant !",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "et-moi",
+          "image": {
+            "src": "../../assets/images/expertises/communication-print/realisation-et-moi.webp",
+            "alt": "Slide 1 projet &moi - Yesss Communication"
+          }
+        },
+        {
+          "projet": "cloisons-du-midi",
+          "image": {
+            "src": "../../assets/images/expertises/communication-print/realisation-cloisons-du-midi.webp",
+            "alt": "Slide 4 projet Cloisons Du Midi - Yesss Communication"
+          }
+        },
+        {
+          "projet": "alfagel",
+          "image": {
+            "src": "../../assets/images/expertises/communication-print/realisation-alfagel.webp",
+            "alt": "Slide 1 projet Alfagel - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Communication \\ {script jaune:print}"
+}

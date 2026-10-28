@@ -1,0 +1,103 @@
+---
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  titre: string;
+  sousTitre: string;
+  items: { titre: string; texte: string }[];
+  objectif: string;
+}
+
+const { titre, sousTitre, items, objectif } = Astro.props;
+---
+
+<section class="missions">
+  <div class="missions__inner container">
+    <Texte as="h2" class="missions__titre" texte={titre} />
+    <Texte class="missions__sous-titre" texte={sousTitre} />
+    <ul class="missions__liste" role="list">
+      {
+        items.map((item) => (
+          <li class="missions__item">
+            <span class="missions__item-titre">{item.titre}</span>
+            <Texte as="span" class="missions__item-texte" texte={item.texte} />
+          </li>
+        ))
+      }
+    </ul>
+    {objectif && <Texte class="missions__objectif" texte={objectif} />}
+  </div>
+</section>
+
+<style>
+  .missions {
+    padding-block: var(--space-xl);
+    background: var(--color-bleu-fonce);
+    color: var(--color-blanc);
+    text-align: center;
+  }
+
+  .missions__inner {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .missions :global(.missions__titre) {
+    color: var(--color-jaune);
+    font-size: var(--text-md);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .missions__liste {
+    display: grid;
+    gap: var(--space-lg) 0;
+    margin-block: var(--space-md);
+    padding: 0;
+    list-style: none;
+  }
+
+  .missions__item {
+    display: grid;
+    align-content: start;
+    gap: var(--space-xs);
+    padding-inline: var(--space-md);
+  }
+
+  /* Titres en script, alternativement jaune et bleu clair */
+  .missions__item-titre {
+    color: var(--color-jaune);
+    font-family: var(--font-script);
+    font-size: clamp(2.25rem, 1.8rem + 1.5vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .missions__item:nth-child(even) .missions__item-titre {
+    color: var(--color-bleu-clair);
+  }
+
+  .missions :global(.missions__item-texte) {
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+  }
+
+  .missions :global(.missions__objectif) {
+    font-size: var(--text-sm);
+  }
+
+  .missions :global(.txt-bleu) {
+    font-weight: var(--font-weight-bold);
+  }
+
+  @media (min-width: 48rem) {
+    .missions__liste {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Filet vertical entre les colonnes */
+    .missions__item:not(:nth-child(3n + 1)) {
+      border-left: 2px solid currentColor;
+    }
+  }
+</style>

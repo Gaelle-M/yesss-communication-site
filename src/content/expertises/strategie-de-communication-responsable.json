@@ -1,0 +1,105 @@
+{
+  "ordre": 1,
+  "nom": "Stratégie de communication responsable",
+  "vignette": {
+    "src": "../../assets/images/expertises/strategie-de-communication-responsable/vignette.webp",
+    "alt": "Expertise stratégie de communication responsable - Yesss Communication agence sur Marseille"
+  },
+  "meta": {
+    "titre": "Stratégie de communication responsable | Yesss Communication",
+    "description": "Yesss Communication, agence sur Marseille, accompagne les entreprises, institutions et marques dans la construction d’une stratégie de communication responsable,"
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Apporter sens et cohérence} à votre \\ communication",
+      "paragraphes": [
+        "Une stratégie de communication efficace n’a de valeur que si elle est **authentique, durable et alignée avec vos engagements**.",
+        "Yesss Communication accompagne les entreprises, institutions et marques dans la construction d’une **stratégie de communication responsable**, qui conjugue performance et éthique."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/strategie-de-communication-responsable/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - Communication responsable RSE"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, cela signifie :",
+      "items": [
+        {
+          "titre": "Définir",
+          "texte": "un positionnement clair et différenciant"
+        },
+        {
+          "titre": "Élaborer",
+          "texte": "des messages sincères et factuels"
+        },
+        {
+          "titre": "Valoriser",
+          "texte": "vos talents, vos savoir-faire et vos engagements RSE"
+        },
+        {
+          "titre": "Mettre en place",
+          "texte": "des plans d’action qui allient impact, transparence et cohérence"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : créer une communication qui inspire la confiance et favorise des liens durables avec vos parties prenantes."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "En tant qu’**entreprise à mission et agence labellisée RSE**, nous conseillons à nos clients ce que nous essayons d'appliquer à nous-mêmes."
+      ],
+      "atoutsLabel": "Notre valeur ajoutée :",
+      "atouts": [
+        "Une expertise stratégique combinée à une démarche responsable",
+        "Une équipe à taille humaine qui vous accompagne avec proximité",
+        "Une vision créative qui place **l’humain et l’enthousiasme au cœur de la communication**"
+      ],
+      "conclusion": "Avec Yesss Communication, vous choisissez une stratégie qui **fait sens, crée de la valeur et génère l’enthousiasme**."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet de Stratégie de {jaune:communication responsable ?}",
+      "texte": "Vous souhaitez aligner votre communication avec vos valeurs, valoriser vos engagements RSE ou donner plus d'impact à vos actions ? \\ Discutons-en dès maintenant.",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "moulins-soufflet",
+          "image": {
+            "src": "../../assets/images/expertises/strategie-de-communication-responsable/realisation-moulins-soufflet.webp",
+            "alt": "Slide 2 projet moulins soufflet - Yesss Communication"
+          }
+        },
+        {
+          "projet": "the-yachter",
+          "image": {
+            "src": "../../assets/images/expertises/strategie-de-communication-responsable/realisation-the-yachter.webp",
+            "alt": "Slide 1 projet The Yachter - Yesss Communication"
+          }
+        },
+        {
+          "projet": "crcm",
+          "image": {
+            "src": "../../assets/images/expertises/strategie-de-communication-responsable/realisation-crcm.webp",
+            "alt": "Slide 3 projet CRCM - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Stratégie de communication \\ {script jaune:responsable}"
+}

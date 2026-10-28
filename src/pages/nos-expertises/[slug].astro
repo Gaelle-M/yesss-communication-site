@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TitrePage from "../../components/ui/TitrePage.astro";
+import Sections from "../../components/sections/Sections.astro";
+
+export async function getStaticPaths() {
+  const expertises = await getCollection("expertises");
+  return expertises.map((expertise) => ({ params: { slug: expertise.id }, props: { expertise } }));
+}
+
+const { titre, meta, sections } = Astro.props.expertise.data;
+---
+
+<BaseLayout title={meta.titre} description={meta.description} header="plein">
+  <TitrePage texte={titre} />
+  <Sections sections={sections} />
+</BaseLayout>

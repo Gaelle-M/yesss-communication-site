@@ -1,0 +1,34 @@
+---
+/** Affiche une suite de sections typées, telle que décrite dans un fichier de contenu. */
+import SectionIntro from "./SectionIntro.astro";
+import SectionMissions from "./SectionMissions.astro";
+import SectionPictos from "./SectionPictos.astro";
+import SectionColonnes from "./SectionColonnes.astro";
+import SectionPourquoi from "./SectionPourquoi.astro";
+import SectionCta from "./SectionCta.astro";
+import SectionRealisations from "./SectionRealisations.astro";
+
+interface Props {
+  sections: { type: string; [cle: string]: unknown }[];
+}
+
+const composants: Record<string, (props: any) => any> = {
+  intro: SectionIntro,
+  missions: SectionMissions,
+  pictos: SectionPictos,
+  colonnes: SectionColonnes,
+  pourquoi: SectionPourquoi,
+  cta: SectionCta,
+  realisations: SectionRealisations,
+};
+
+const { sections } = Astro.props;
+---
+
+{
+  sections.map(({ type, ...props }) => {
+    const Composant = composants[type];
+    if (!Composant) throw new Error(`Type de section inconnu : « ${type} »`);
+    return <Composant {...props} />;
+  })
+}

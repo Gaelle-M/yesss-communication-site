@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Texte from "../ui/Texte.astro";
+import Button from "../ui/Button.astro";
+
+interface Props {
+  titre: string;
+  projets: { projet: string; image: { src: ImageMetadata; alt: string } }[];
+  bouton: { label: string; href: string };
+}
+
+const { titre, projets, bouton } = Astro.props;
+---
+
+<section class="realisations">
+  <div class="realisations__inner container">
+    <Texte as="h2" class="realisations__titre" texte={titre} />
+    <ul class="realisations__liste" role="list">
+      {
+        projets.map((p) => (
+          <li>
+            <a href={`/projets/${p.projet}/`}>
+              <Image src={p.image.src} alt={p.image.alt} widths={[340, 680]} sizes="(min-width: 48rem) 21rem, 90vw" width={680} height={640} fit="cover" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <Button {...bouton} variant="bleu" />
+  </div>
+</section>
+
+<style>
+  .realisations {
+    padding-block: var(--space-xl);
+  }
+
+  .realisations__inner {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+  }
+
+  .realisations :global(.realisations__titre) {
+    font-size: var(--text-lg);
+    text-transform: uppercase;
+  }
+
+  .realisations__liste {
+    display: grid;
+    gap: var(--space-md);
+    width: 100%;
+    padding: 0;
+    list-style: none;
+  }
+
+  .realisations__liste a {
+    display: block;
+    overflow: hidden;
+  }
+
+  .realisations__liste img {
+    width: 100%;
+    aspect-ratio: 340 / 320;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .realisations__liste a:hover img {
+    transform: scale(1.04);
+  }
+
+  @media (min-width: 48rem) {
+    .realisations__liste {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+{
+  "ordre": 8,
+  "nom": "Création de packaging",
+  "vignette": {
+    "src": "../../assets/images/expertises/creation-de-packaging/vignette.webp",
+    "alt": "Expertise création packaging - Yesss Communication agence à Marseille"
+  },
+  "meta": {
+    "titre": "Création de packaging | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille, nous créons des packagings qui attirent l’œil, racontent une histoire et valorisent vos engagements..."
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Un packaging, } c’est bien plus \\ qu’un emballage",
+      "paragraphes": [
+        "Chez Yesss Communication, nous créons des packagings qui **attirent l’œil, racontent une histoire et valorisent vos engagements**.",
+        "Nous vous accompagnons dans la conception de packagings qui allient **esthétique, efficacité et cohérence de marque**."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/creation-de-packaging/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - Création de Packagings"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous intervenons pour :",
+      "items": [
+        {
+          "titre": "La création",
+          "texte": "graphique de packagings uniques et différenciants"
+        },
+        {
+          "titre": "L’adaptation",
+          "texte": "de votre identité visuelle à vos supports produits"
+        },
+        {
+          "titre": "Le design",
+          "texte": "d’emballages clairs, attractifs et immédiatement compréhensibles par le consommateur"
+        },
+        {
+          "titre": "La mise en valeur",
+          "texte": "de vos produits grâce à un storytelling visuel impactant"
+        },
+        {
+          "titre": "La prise en compte",
+          "texte": "des contraintes **techniques de fabrication **(formats, matériaux, impressions) et des **exigences des distributeurs**, notamment en GMS, où chaque catégorie obéit à des codes précis de lisibilité et d’impact en rayon"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : faire de votre packaging un **vecteur de séduction, de reconnaissance et de fidélisation**, tout en respectant les standards de votre marché."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce qu’un bon packaging doit à la fois **séduire, informer et refléter vos valeurs**."
+      ],
+      "atoutsLabel": "Nos points forts :",
+      "atouts": [
+        "Une approche créative qui fait émerger vos produits dans un univers concurrentiel",
+        "Une expertise graphique alliée à une parfaite connaissance des contraintes de **fabrication et de distribution**",
+        "Une démarche responsable : chez Yesss, nous concevons aussi des packagings **éco-responsables, pensés pour limiter l’impact environnemental**"
+      ],
+      "conclusion": "Avec Yesss Communication, votre packaging devient un véritable **ambassadeur de votre marque et un allié commercial**."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet de {jaune:CRÉATION DE PACKAGING ?}",
+      "texte": "Vous lancez un nouveau produit ou souhaitez moderniser l'emballage de votre gamme pour vous démarquer ? \\ Échangeons sur votre projet.",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "kintsugi-art",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-packaging/realisation-kintsugi-art.webp",
+            "alt": "Slide 2 projets Kintsugi art - Yesss Communication, agence Marseille"
+          }
+        },
+        {
+          "projet": "maison-de-la-glace",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-packaging/realisation-maison-de-la-glace.webp",
+            "alt": "Slide 1 projet Maison de la Glace - Yesss Communication"
+          }
+        },
+        {
+          "projet": "salaison-du-champsaur",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-packaging/realisation-salaison-du-champsaur.webp",
+            "alt": "Slide 3 projets Salaison du Champsaur - Yesss communication, agence sur Marseille"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Création de \\ {script jaune:packaging}"
+}

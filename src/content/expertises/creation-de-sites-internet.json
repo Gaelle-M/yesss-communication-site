@@ -1,0 +1,115 @@
+{
+  "ordre": 3,
+  "nom": "Création de sites internet",
+  "vignette": {
+    "src": "../../assets/images/expertises/creation-de-sites-internet/vignette.webp",
+    "alt": "Expertise création de sites internet - Yesss Communication agence à Marseille"
+  },
+  "meta": {
+    "titre": "Agence Création de sites internet | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille nous créons des sites web clairs, attractifs et performants, pensés pour refléter votre identité et atteindre vos objectifs."
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Votre entreprise a grandi. } Votre site internet aussi devrait évoluer.",
+      "paragraphes": [
+        "Chez YESSS Communication, nous concevons des sites internet performants qui **valorisent votre image,** génèrent des opportunités et limitent leur impact sur l'environnement. Pensés pour refléter votre identité, atteindre **vos objectifs et s'inscrire dans votre démarche RSE,** ils deviennent de véritables leviers de développement.",
+        "Nous vous accompagnons de la définition de votre stratégie jusqu'à la mise en ligne de votre site, avec une approche à la fois créative, technique et responsable."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/creation-de-sites-internet/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - Création et intégration de site web CMS"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nous créons des sites internet qui allient performance, design et responsabilité",
+      "sousTitre": "Concrètement, cela signifie :",
+      "items": [
+        {
+          "titre": "Créer",
+          "texte": "des sites vitrines, institutionnels et e-commerce ergonomiques, performants et évolutifs"
+        },
+        {
+          "titre": "Développer",
+          "texte": "des interfaces adaptées à vos besoins techniques, à votre budget et à votre niveau d’autonomie"
+        },
+        {
+          "titre": "Optimiser",
+          "texte": "les performances : référencement naturel (SEO), visibilité sur les moteurs d'IA (GEO), rapidité de chargement, accessibilité et conversion."
+        },
+        {
+          "titre": "Concevoir",
+          "texte": "un design graphique qui valorise votre image de marque et inspire confiance"
+        },
+        {
+          "titre": "Eco-Concevoir",
+          "texte": "des sites plus sobres en limitant leur impact environnemental : architecture, design, hébergement, optimisation des ressources"
+        },
+        {
+          "titre": "Offrir",
+          "texte": "une expérience utilisateur fluide qui facilite la navigation et encourage le passage à l'action"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : vous livrer un site qui **séduit vos visiteurs et transforme vos contacts en clients**."
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Nous ne créons pas simplement des sites internet. Nous concevons **des outils de communication** qui renforcent votre image, soutiennent votre développement et s'intègrent dans une **démarche numérique plus responsable.**"
+      ],
+      "atoutsLabel": "Nos atouts :",
+      "atouts": [
+        "Une expertise reconnue sur les **CMS leaders du marché :** WordPress, Prestashop...",
+        "Des sites pensés pour être **performants** : référencement naturel, rapidité, accessibilité et conversion.",
+        "Une **équipe à taille humaine,** disponible et impliquée à chaque étape de votre projet.",
+        "Une **approche responsable :** des sites éco-conçus, accessibles et conçus pour durer.",
+        "Un **accompagnement global** qui peut intégrer votre stratégie de contenus, vos réseaux sociaux et votre visibilité digitale."
+      ],
+      "conclusion": "Avec Yesss Communication, vous choisissez un site internet **fiable, moderne et porteur de sens**."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet de création ou de refonte de {jaune:site internet ?}",
+      "texte": "Votre site est vieillissant, ne reflète plus votre entreprise/marque ou ne génère pas suffisamment de contacts ? \\ Échangeons sur votre projet.",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "the-yachter",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-sites-internet/realisation-the-yachter.webp",
+            "alt": "Slide 1 projet The Yachter - Yesss Communication"
+          }
+        },
+        {
+          "projet": "imm",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-sites-internet/realisation-imm.webp",
+            "alt": "Slide 1 projet IMM - Yesss Communication"
+          }
+        },
+        {
+          "projet": "alfagel",
+          "image": {
+            "src": "../../assets/images/expertises/creation-de-sites-internet/realisation-alfagel.webp",
+            "alt": "Slide 1 projet Alfagel - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Création de sites \\ {script jaune:internet}"
+}

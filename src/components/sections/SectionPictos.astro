@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Texte from "../ui/Texte.astro";
+
+interface Props {
+  intro: string;
+  titre: string;
+  texte: string;
+  items: { image: { src: ImageMetadata; alt: string }; texte: string }[];
+  note: string;
+}
+
+const { intro, titre, texte, items, note } = Astro.props;
+---
+
+<section class="pictos">
+  <div class="pictos__inner container">
+    <Texte class="pictos__intro" texte={intro} />
+    <Texte as="h2" class="pictos__titre" texte={titre} />
+    <Texte class="pictos__texte" texte={texte} />
+    <ul class="pictos__liste" role="list">
+      {
+        items.map((item) => (
+          <li class="pictos__item">
+            <Image src={item.image.src} alt={item.image.alt} width={88} />
+            <Texte as="span" texte={item.texte} />
+          </li>
+        ))
+      }
+    </ul>
+    <Texte class="pictos__note" texte={note} />
+  </div>
+</section>
+
+<style>
+  .pictos {
+    padding-block: var(--space-xl);
+  }
+
+  .pictos__inner {
+    display: grid;
+    gap: var(--space-lg);
+    max-width: var(--container-narrow);
+  }
+
+  .pictos :global(.pictos__intro),
+  .pictos :global(.pictos__texte) {
+    font-size: var(--text-md);
+  }
+
+  .pictos :global(.pictos__titre) {
+    color: var(--color-jaune);
+    font-family: var(--font-script);
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+    font-weight: var(--font-weight-regular);
+    text-align: center;
+  }
+
+  .pictos__liste {
+    display: grid;
+    gap: var(--space-md) var(--space-xl);
+    padding: 0;
+    list-style: none;
+  }
+
+  .pictos__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+  }
+
+  .pictos__item img {
+    flex: none;
+    width: 5.5rem;
+  }
+
+  .pictos :global(.pictos__note) {
+    text-align: center;
+  }
+
+  @media (min-width: 48rem) {
+    .pictos__liste {
+      grid-template-columns: repeat(2, 1fr);
+      padding-inline: var(--space-xl);
+    }
+  }
+</style>

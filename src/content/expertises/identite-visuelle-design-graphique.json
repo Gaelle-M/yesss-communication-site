@@ -1,0 +1,101 @@
+{
+  "ordre": 6,
+  "nom": "Identité visuelle & design graphique",
+  "vignette": {
+    "src": "../../assets/images/expertises/identite-visuelle-design-graphique/vignette.webp",
+    "alt": "Expertise identité visuelle et design graphique RSE - Yesss Communication agence à Marseille"
+  },
+  "meta": {
+    "titre": "Identité visuelle & design graphique | Yesss Communication",
+    "description": "Chez YESSS Communication, agence sur Marseille, nous créons des identités visuelles et des supports graphiques qui captent l’attention, traduisent vos valeurs et renforcent votre impact."
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "titre": "{bleu:Votre image parle } avant vos mots",
+      "paragraphes": [
+        "Chez Yesss Communication, nous créons des identités visuelles et des supports graphiques qui **captent l’attention, traduisent vos valeurs et renforcent votre impact**.",
+        "Nous accompagnons les entreprises, marques et institutions dans la conception d’univers visuels cohérents et différenciants."
+      ],
+      "image": {
+        "src": "../../assets/images/expertises/identite-visuelle-design-graphique/intro.webp",
+        "alt": "Expertise Yesss Communication agence sur Marseille - Communication graphique Webdesign"
+      }
+    },
+    {
+      "type": "missions",
+      "titre": "Nos missions principales",
+      "sousTitre": "Concrètement, nous intervenons pour :",
+      "items": [
+        {
+          "titre": "La création",
+          "texte": "et la refonte d’identité visuelle (logo, chartes graphique, palette de couleurs, typographie...)"
+        },
+        {
+          "titre": "La conception",
+          "texte": "de supports de communication [print](/nos-expertises/communication-print/) et digitaux ([packaging](/nos-expertises/creation-de-packaging/), plaquette, affiche, présentation, bannière, visuels social media…)"
+        },
+        {
+          "titre": "L’harmonisation",
+          "texte": "de votre image de marque sur tous vos canaux"
+        }
+      ],
+      "objectif": "{bleu:Notre objectif} : donner à votre marque, entreprise ou institution une identité graphique qui **vous ressemble et vous distingue**"
+    },
+    {
+      "type": "pourquoi",
+      "titre": "Pourquoi \\ {script bleu:choisir} \\ Yesss ?",
+      "paragraphes": [
+        "Parce qu’un design réussi n’est pas seulement esthétique : il est aussi **stratégique**."
+      ],
+      "atoutsLabel": "Nos atouts :",
+      "atouts": [
+        "Une direction artistique qui allie créativité et clarté",
+        "Une équipe capable de traduire vos valeurs en une image forte et cohérente",
+        "Une approche responsable : chez Yesss, nous concevons aussi des supports **sobres, accessibles et pensés pour durer**"
+      ],
+      "conclusion": "Avec Yesss Communication, votre identité visuelle devient un véritable **levier de reconnaissance et de confiance**."
+    },
+    {
+      "type": "cta",
+      "titre": "Un projet D'IDENTITÉ {jaune:VISUELLE & DESIGN GRAPHIQUE ?}",
+      "texte": "Vous lancez votre activité ou souhaitez moderniser l’image de votre entreprise pour captiver votre audience ? Créons un univers visuel fort, cohérent et fidèle à vos valeurs. \\ Échangeons sur votre projet.",
+      "bouton": {
+        "label": "Devis gratuit",
+        "href": "/contactez-nous/"
+      }
+    },
+    {
+      "type": "realisations",
+      "titre": "Nos {bleu:réalisations}",
+      "projets": [
+        {
+          "projet": "qommute",
+          "image": {
+            "src": "../../assets/images/expertises/identite-visuelle-design-graphique/realisation-qommute.webp",
+            "alt": "Slide 1 projet Qommute - Yesss Communication"
+          }
+        },
+        {
+          "projet": "cloisons-du-midi",
+          "image": {
+            "src": "../../assets/images/expertises/identite-visuelle-design-graphique/realisation-cloisons-du-midi.webp",
+            "alt": "Slide 4 projet Cloisons Du Midi - Yesss Communication"
+          }
+        },
+        {
+          "projet": "crcm",
+          "image": {
+            "src": "../../assets/images/expertises/identite-visuelle-design-graphique/realisation-crcm.webp",
+            "alt": "Slide 3 projet CRCM - Yesss Communication"
+          }
+        }
+      ],
+      "bouton": {
+        "label": "Voir plus de projets",
+        "href": "/projets/"
+      }
+    }
+  ],
+  "titre": "Identité visuelle \\ {script jaune: & design graphique}"
+}
