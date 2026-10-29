@@ -6,6 +6,15 @@ import TitrePage from "../../components/ui/TitrePage.astro";
 import page from "../../content/pages/expertises.json";
 
 const expertises = (await getCollection("expertises")).sort((a, b) => a.data.ordre - b.data.ordre);
+// L'image d'introduction est souvent le même visuel que la vignette, en plus grande résolution :
+// on la prend si ses proportions sont les mêmes, sinon on garde la vignette.
+const ratio = (i: { width: number; height: number }) => i.width / i.height;
+const visuel = (e: (typeof expertises)[number]) => {
+  const vignette = e.data.vignette.src;
+  const intro = e.data.sections.find((s) => s.type === "intro");
+  const image = intro && "image" in intro ? intro.image.src : undefined;
+  return image && Math.abs(ratio(image) - ratio(vignette)) < 0.1 ? image : vignette;
+};
 ---
 
 <BaseLayout title={page.meta.titre} description={page.meta.description} header="plein">
@@ -15,7 +24,7 @@ const expertises = (await getCollection("expertises")).sort((a, b) => a.data.ord
       expertises.map((e) => (
         <li>
           <a class="expertises__lien" href={`/nos-expertises/${e.id}/`}>
-            <Image src={e.data.vignette.src} alt="" widths={[300, 600]} sizes="(min-width: 48rem) 18rem, 70vw" />
+            <Image src={visuel(e)} alt="" widths={[360, 720]} sizes="(min-width: 64rem) 23rem, (min-width: 40rem) 45vw, 85vw" />
             <span>{page.lien.replace("{nom}", e.data.nom)}</span>
           </a>
         </li>
@@ -28,7 +37,7 @@ const expertises = (await getCollection("expertises")).sort((a, b) => a.data.ord
   .expertises {
     display: grid;
     gap: var(--space-lg) var(--space-md);
-    max-width: var(--container-narrow);
+    max-width: var(--container-max);
     padding: var(--space-md) 0 var(--space-2xl);
     list-style: none;
   }
@@ -44,7 +53,7 @@ const expertises = (await getCollection("expertises")).sort((a, b) => a.data.ord
   }
 
   .expertises__lien img {
-    width: min(100%, 18rem);
+    width: min(100%, 23rem);
     transition: transform 0.4s ease;
   }
 

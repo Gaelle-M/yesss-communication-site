@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Galerie from "../../components/ui/Galerie.astro";
+import Defilement from "../../components/ui/Defilement.astro";
 import ListeProjets from "../../components/sections/ListeProjets.astro";
 import { getImage } from "../../lib/images";
 import page from "../../content/pages/projets.json";
@@ -14,7 +14,7 @@ const logos = page.clients.logos.map((l) => ({ src: getImage(l.image), alt: l.al
   <div class="projets">
     <h1 class="projets__titre">{page.titre}</h1>
     <div class="projets__clients">
-      <Galerie images={logos} labels={page.clients.galerie} ratio="266 / 144" ajustement="contain" sizes="20rem" widths={[266]} />
+      <Defilement images={logos} label={page.clients.label} parVue={[3, 5, 7]} ratio="266 / 144" ajustement="contain" vitesse={2.5} widths={[266]} />
     </div>
     <ListeProjets projets={projets} textes={page} />
   </div>
@@ -31,15 +31,7 @@ const logos = page.clients.logos.map((l) => ({ src: getImage(l.image), alt: l.al
   }
 
   .projets__clients {
-    width: min(100% - 2 * var(--gutter), 36rem);
-    margin: var(--space-md) auto var(--space-lg);
-  }
-
-  .projets__clients :global(.galerie__piste) {
-    margin-inline: 3rem;
-  }
-
-  .projets__clients :global(.galerie__fleche) {
-    background: transparent;
+    width: min(100% - 2 * var(--gutter), var(--container-max));
+    margin: var(--space-lg) auto var(--space-xl);
   }
 </style>

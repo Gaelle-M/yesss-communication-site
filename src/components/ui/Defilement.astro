@@ -1,0 +1,209 @@
+---
+/**
+ * Bande d'images qui défile en continu et en boucle (sans flèches, sans espace entre les images).
+ * - pause au survol ;
+ * - on peut l'attraper (souris ou doigt) pour la faire défiler plus vite, dans les deux sens ;
+ * - « réduire les animations » : pas de défilement automatique, seulement à la main.
+ * Sans JavaScript, la bande défile quand même (animation CSS), sans le glisser.
+ */
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  images: { src: ImageMetadata; alt: string }[];
+  label: string;
+  /** Nombre d'images visibles : mobile, tablette (≥ 48rem), ordinateur (≥ 60rem) */
+  parVue?: [number, number, number];
+  /** Proportions d'une image, ex. "380 / 340" */
+  ratio?: string;
+  /** "cover" : image recadrée pour remplir ; "contain" : image entière (logos) */
+  ajustement?: "cover" | "contain";
+  /** Durée d'un passage d'image, en secondes */
+  vitesse?: number;
+  widths?: number[];
+}
+
+const {
+  images,
+  label,
+  parVue = [2, 4, 5],
+  ratio = "1",
+  ajustement = "cover",
+  vitesse = 3,
+  widths = [380, 760],
+} = Astro.props;
+const style = [
+  `--par-vue-1: ${parVue[0]}`,
+  `--par-vue-2: ${parVue[1]}`,
+  `--par-vue-3: ${parVue[2]}`,
+  `--ratio: ${ratio}`,
+  `--ajustement: ${ajustement}`,
+  `--duree: ${images.length * vitesse}s`,
+].join("; ");
+const tailles = `(min-width: 60rem) ${Math.ceil(100 / parVue[2])}vw, (min-width: 48rem) ${Math.ceil(100 / parVue[1])}vw, ${Math.ceil(100 / parVue[0])}vw`;
+---
+
+<section class="defilement" aria-label={label} style={style} data-vitesse={vitesse}>
+  <ul class="defilement__piste" role="list">
+    {
+      images.map((img) => (
+        <li class="defilement__item">
+          <Image src={img.src} alt={img.alt} widths={widths.filter((w) => w <= img.src.width * 2)} sizes={tailles} draggable="false" />
+        </li>
+      ))
+    }
+    {
+      /* Deuxième passage, identique, pour une boucle sans à-coup (ignoré par les lecteurs d'écran) */
+      images.map((img) => (
+        <li class="defilement__item" aria-hidden="true">
+          <Image src={img.src} alt="" widths={widths.filter((w) => w <= img.src.width * 2)} sizes={tailles} draggable="false" />
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script>
+  const reduire = matchMedia("(prefers-reduced-motion: reduce)");
+
+  document.querySelectorAll<HTMLElement>(".defilement").forEach((bloc) => {
+    const piste = bloc.querySelector<HTMLElement>(".defilement__piste")!;
+    const items = piste.children.length / 2;
+    const dureeImage = Number(bloc.dataset.vitesse) * 1000; // ms pour faire passer une image
+    bloc.classList.add("is-js"); // désactive l'animation CSS de secours
+
+    let position = 0; // décalage en px (négatif = vers la gauche)
+    let survol = false;
+    let glisse: { x: number; depart: number } | null = null;
+    let elan = 0; // vitesse en px/ms laissée par un lancer, qui s'amortit
+    let precedent = performance.now();
+    let dernierX = 0;
+    let dernierT = 0;
+
+    function boucler() {
+      const l = piste.scrollWidth / 2;
+      if (l > 0) position = ((position % l) - l) % l; // toujours entre -l et 0
+    }
+
+    function image(t: number) {
+      const dt = Math.min(t - precedent, 64);
+      precedent = t;
+      if (!glisse) {
+        const auto = survol || reduire.matches ? 0 : piste.scrollWidth / 2 / items / dureeImage;
+        position += (elan - auto) * dt;
+        elan *= Math.pow(0.95, dt / 16); // amortissement du lancer
+        if (Math.abs(elan) < 0.01) elan = 0;
+      }
+      boucler();
+      piste.style.transform = `translate3d(${position}px, 0, 0)`;
+      requestAnimationFrame(image);
+    }
+    requestAnimationFrame(image);
+
+    bloc.addEventListener("pointerenter", (e) => {
+      if (e.pointerType === "mouse") survol = true;
+    });
+    bloc.addEventListener("pointerleave", () => (survol = false));
+
+    bloc.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      glisse = { x: e.clientX, depart: position };
+      dernierX = e.clientX;
+      dernierT = e.timeStamp;
+      elan = 0;
+      bloc.setPointerCapture(e.pointerId);
+      bloc.classList.add("is-grabbing");
+    });
+
+    bloc.addEventListener("pointermove", (e) => {
+      if (!glisse) return;
+      position = glisse.depart + (e.clientX - glisse.x);
+      const dt = e.timeStamp - dernierT;
+      if (dt > 0) elan = (e.clientX - dernierX) / dt;
+      dernierX = e.clientX;
+      dernierT = e.timeStamp;
+    });
+
+    function lacher() {
+      if (!glisse) return;
+      glisse = null;
+      bloc.classList.remove("is-grabbing");
+    }
+    bloc.addEventListener("pointerup", lacher);
+    bloc.addEventListener("pointercancel", lacher);
+  });
+</script>
+
+<style>
+  .defilement {
+    --par-vue: var(--par-vue-1);
+    overflow: hidden;
+    container-type: inline-size;
+    cursor: grab;
+    /* Le défilement vertical de la page reste possible au doigt */
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .defilement.is-grabbing {
+    cursor: grabbing;
+  }
+
+  .defilement__piste {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    will-change: transform;
+    animation: defiler var(--duree) linear infinite;
+  }
+
+  /* Le script prend le relais de l'animation CSS */
+  .defilement.is-js .defilement__piste {
+    animation: none;
+  }
+
+  .defilement__item {
+    flex: none;
+    /* 100cqi = largeur du bloc .defilement */
+    width: calc(100cqi / var(--par-vue));
+  }
+
+  .defilement__item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--ratio);
+    object-fit: var(--ajustement);
+    pointer-events: none;
+  }
+
+  @keyframes defiler {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .defilement:not(.is-js):hover .defilement__piste {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .defilement__piste {
+      animation: none;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .defilement {
+      --par-vue: var(--par-vue-2);
+    }
+  }
+
+  @media (min-width: 60rem) {
+    .defilement {
+      --par-vue: var(--par-vue-3);
+    }
+  }
+</style>

@@ -92,6 +92,31 @@ const autres = [...tags.keys()].filter((s) => !principaux.includes(s)).sort();
 </div>
 
 <script>
+  // Survol : l'aplat de couleur entre par le bord où arrive la souris et sort par le bord où elle part
+  const decalages = { haut: "0, -100%", bas: "0, 100%", gauche: "-100%, 0", droite: "100%, 0" };
+  function bord(el: HTMLElement, e: PointerEvent): keyof typeof decalages {
+    const r = el.getBoundingClientRect();
+    const d = { haut: e.clientY - r.top, bas: r.bottom - e.clientY, gauche: e.clientX - r.left, droite: r.right - e.clientX };
+    return (Object.keys(d) as (keyof typeof d)[]).reduce((a, b) => (d[a] <= d[b] ? a : b));
+  }
+
+  document.querySelectorAll<HTMLElement>(".carte__lien").forEach((lien) => {
+    const voile = lien.querySelector<HTMLElement>(".carte__voile")!;
+    lien.addEventListener("pointerenter", (e) => {
+      if (e.pointerType !== "mouse") return;
+      // Placement instantané hors de la carte, côté entrée, puis glissement vers le centre
+      voile.classList.add("is-instant");
+      voile.style.translate = decalages[bord(lien, e)].replace(", ", " ");
+      voile.getBoundingClientRect();
+      voile.classList.remove("is-instant");
+      voile.style.translate = "0 0";
+    });
+    lien.addEventListener("pointerleave", (e) => {
+      if (e.pointerType !== "mouse") return;
+      voile.style.translate = decalages[bord(lien, e)].replace(", ", " ");
+    });
+  });
+
   document.querySelectorAll<HTMLElement>(".liste").forEach((liste) => {
     const parPage = Number(liste.dataset.parPage);
     const cartes = Array.from(liste.querySelectorAll<HTMLElement>(".carte"));
@@ -222,10 +247,28 @@ const autres = [...tags.keys()].filter((s) => !principaux.includes(s)).sort();
     justify-content: center;
     gap: var(--space-xs);
     padding: var(--space-lg);
-    background: color-mix(in srgb, var(--voile) 85%, transparent);
+    background: var(--voile);
     text-align: center;
+    /* Au repos : hors de la carte (en bas sans JavaScript) */
+    translate: 0 100%;
+    transition: translate 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .carte__voile.is-instant {
+    transition: none;
+  }
+
+  /* Le texte arrive juste après l'aplat */
+  .carte__nom,
+  .carte__tags {
     opacity: 0;
-    transition: opacity var(--transition);
+    transition: opacity 0.3s ease;
+  }
+
+  .carte__lien:hover :is(.carte__nom, .carte__tags),
+  .carte__lien:focus-visible :is(.carte__nom, .carte__tags) {
+    opacity: 1;
+    transition-delay: 0.15s;
   }
 
   .carte__nom {
@@ -236,13 +279,23 @@ const autres = [...tags.keys()].filter((s) => !principaux.includes(s)).sort();
     font-size: var(--text-sm);
   }
 
+  /* Clavier, ou survol sans JavaScript : l'aplat monte depuis le bas.
+     Avec JavaScript, le style posé par le script (sens d'entrée) l'emporte. */
   .carte__lien:hover .carte__voile,
   .carte__lien:focus-visible .carte__voile {
-    opacity: 1;
+    translate: 0 0;
   }
 
   .carte__lien:hover img {
     transform: scale(1.04);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carte__voile,
+    .carte__nom,
+    .carte__tags {
+      transition: none;
+    }
   }
 
   .carte__lien:focus-visible {
@@ -254,6 +307,10 @@ const autres = [...tags.keys()].filter((s) => !principaux.includes(s)).sort();
     .carte__voile {
       inset: auto 0 0;
       padding: var(--space-sm);
+      translate: 0 0;
+    }
+
+    .carte__nom {
       opacity: 1;
     }
 

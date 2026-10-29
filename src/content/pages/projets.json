@@ -5,12 +5,6 @@
   },
   "titre": "Ils disent Yesss",
   "clients": {
-    "galerie": {
-      "label": "Ils nous font confiance",
-      "precedent": "Logo précédent",
-      "suivant": "Logo suivant",
-      "position": "Logo {n} sur {total}"
-    },
     "logos": [
       {
         "image": "clients/logo-aabl-avocat-yesss.webp",
@@ -132,7 +126,8 @@
         "image": "clients/partenaire-logo-elec-engineering-yesss-communication.webp",
         "alt": "Logo Elec engineering"
       }
-    ]
+    ],
+    "label": "Ils nous font confiance"
   },
   "tri": {
     "label": "Trier les projets par mot-clé",

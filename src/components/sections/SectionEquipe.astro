@@ -24,7 +24,7 @@ const a11y = site.accessibilite;
     {
       membres.map((m) => (
         <li class="membre">
-          <Image class="membre__photo" src={m.photo.src} alt={m.photo.alt} widths={[300, 600]} sizes="(min-width: 48rem) 22rem, 80vw" />
+          <Image class="membre__photo" src={m.photo.src} alt={m.photo.alt} widths={[340, 680]} sizes="(min-width: 48rem) 28rem, 90vw" />
           <h3 class="membre__nom">{m.nom}</h3>
           <p class="membre__role">{m.role}</p>
           <a class="membre__linkedin" href={m.linkedin} target="_blank" rel="noopener">
@@ -56,7 +56,7 @@ const a11y = site.accessibilite;
   .equipe__liste {
     display: grid;
     gap: var(--space-xl) var(--space-lg);
-    max-width: 52rem;
+    max-width: 64rem;
     padding: 0;
     list-style: none;
   }
@@ -69,7 +69,7 @@ const a11y = site.accessibilite;
   }
 
   .membre__photo {
-    width: min(100%, 22rem);
+    width: min(100%, 28rem);
     margin-bottom: var(--space-sm);
   }
 

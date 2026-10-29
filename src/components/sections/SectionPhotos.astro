@@ -1,10 +1,9 @@
 ---
-/** Carrousel de photos pleine largeur avec titre (« Partenaires and Co ») */
+/** Bande de photos pleine largeur qui défile en continu, avec titre (« Partenaires and Co ») */
 import type { ImageMetadata } from "astro";
 import TitreLigne from "../ui/TitreLigne.astro";
-import Galerie from "../ui/Galerie.astro";
+import Defilement from "../ui/Defilement.astro";
 import { texteBrut } from "../../lib/inline";
-import site from "../../content/site.json";
 
 interface Props {
   titre: string;
@@ -17,13 +16,7 @@ const nom = texteBrut(titre);
 
 <section class="photos">
   <TitreLigne texte={titre} />
-  <Galerie
-    images={images}
-    labels={{ label: nom, ...site.accessibilite.galeriePhotos }}
-    ratio="16 / 9"
-    sizes="100vw"
-    widths={[640, 1280, 1920]}
-  />
+  <Defilement images={images} label={nom} parVue={[2, 4, 5]} ratio="380 / 340" />
 </section>
 
 <style>

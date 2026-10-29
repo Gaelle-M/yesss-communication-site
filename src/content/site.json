@@ -25,11 +25,6 @@
     "reseauxSociaux": "Réseaux sociaux",
     "nouvelOnglet": "(nouvel onglet)",
     "linkedinDe": "LinkedIn de {nom}",
-    "galeriePhotos": {
-      "precedent": "Photo précédente",
-      "suivant": "Photo suivante",
-      "position": "Photo {n} sur {total}"
-    },
     "videoDecorative": "Animation d'illustration (sans son)"
   },
   "menu": {
@@ -88,7 +83,8 @@
             "label": "Création de packaging",
             "href": "/nos-expertises/creation-de-packaging/"
           }
-        ]
+        ],
+        "tout": "Voir toutes nos expertises →"
       },
       {
         "label": "Ils disent Yesss",
@@ -112,7 +108,8 @@
       },
       {
         "label": "Charte éthique",
-        "href": "/documents/charte-ethique-des-affaires.pdf"
+        "href": "/documents/charte-ethique-des-affaires.pdf",
+        "nouvelOnglet": true
       },
       {
         "label": "Mentions légales",

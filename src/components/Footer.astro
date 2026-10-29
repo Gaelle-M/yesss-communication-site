@@ -22,7 +22,14 @@ const { coordonnees: c, reseau, hebergement } = footer;
         {
           footer.liens.map((lien) => (
             <li>
-              <a href={lien.href}>{lien.label}</a>
+              {"nouvelOnglet" in lien && lien.nouvelOnglet ? (
+                <a href={lien.href} target="_blank" rel="noopener">
+                  {lien.label}
+                  <span class="visually-hidden"> {a11y.nouvelOnglet}</span>
+                </a>
+              ) : (
+                <a href={lien.href}>{lien.label}</a>
+              )}
             </li>
           ))
         }
