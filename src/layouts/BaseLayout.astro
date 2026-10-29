@@ -16,6 +16,11 @@ interface Props {
 }
 
 const { title, description, header = "transparent", theme, fondClair = false } = Astro.props;
+
+// Indexation par les moteurs de recherche : désactivée par défaut (version de test).
+// Pour la production, définir PUBLIC_INDEXATION=true (fichier .env ou réglages de l'hébergeur)
+// et supprimer public/_headers.
+const indexable = import.meta.env.PUBLIC_INDEXATION === "true";
 ---
 
 <!doctype html>
@@ -25,6 +30,7 @@ const { title, description, header = "transparent", theme, fondClair = false } =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preload" href="/fonts/Lexend-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Lexend-700-latin.woff2" as="font" type="font/woff2" crossorigin />

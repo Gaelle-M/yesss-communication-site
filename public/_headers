@@ -1,0 +1,5 @@
+# Version de test : demande aux moteurs de recherche de ne pas indexer le site.
+# Lu par les hébergeurs qui gèrent ce format (Netlify, Cloudflare Pages…).
+# MISE EN PRODUCTION : supprimer ce bloc (ou tout le fichier).
+/*
+  X-Robots-Tag: noindex, nofollow
